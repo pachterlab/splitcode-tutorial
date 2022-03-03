@@ -1,22 +1,28 @@
-Welcome to Lumache's documentation!
+splitcode
 ===================================
 
-**Lumache** (/lu'make/) is a Python library for cooks and food lovers
-that creates recipes mixing random ingredients.
-It pulls data from the `Open Food Facts database <https://world.openfoodfacts.org/>`_
-and offers a *simple* and *intuitive* API.
-
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+**splitcode** is a tool for flexible, efficient parsing and preprocessing of technical sequences in sequencing reads.
 
 .. note::
 
    This project is under active development.
 
-Contents
---------
+.. toctree::
+   :maxdepth: 2
+   :caption: Introduction:
+
+   getting_started
 
 .. toctree::
+   :maxdepth: 1
+   :caption: Contents:
 
-   usage
-   api
+   user_guide
+   reference_guide
+
+.. toctree::
+  :maxdepth: 2
+  :caption: Tutorials:
+
+  kallisto
+  sprite
