@@ -5,14 +5,15 @@ Installation
 ^^^^^^^^^^^^
 To use splitcode, first install it from source:
 
-    git clone https://github.com/Yenaled/splitcode.git
-    cd splitcode
-    mkdir build
-    cd build
-    cmake ..
-    make
-    make install
+.. code-block:: shell
 
+  git clone https://github.com/Yenaled/splitcode.git
+  cd splitcode
+  mkdir build
+  cd build
+  cmake ..
+  make
+  make install
 
 
 Command-line structure
