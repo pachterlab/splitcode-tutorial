@@ -3,11 +3,17 @@ Getting started
 
 Installation
 ^^^^^^^^^^^^
-To use Lumache, first install it using pip:
+To use splitcode, first install it from source:
 
-.. code-block:: console
+    git clone https://github.com/Yenaled/splitcode.git
+    cd splitcode
+    mkdir build
+    cd build
+    cmake ..
+    make
+    make install
 
-   (.venv) $ pip install lumache
+
 
 Command-line structure
 ^^^^^^^^^^^^^^^^^^^^^^
