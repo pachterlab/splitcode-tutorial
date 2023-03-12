@@ -11,7 +11,7 @@ To use splitcode, first install it from source:
   cd splitcode
   mkdir build
   cd build
-  cmake ..
+  cmake .. -DZLIBNG=ON
   make
   make install
 
