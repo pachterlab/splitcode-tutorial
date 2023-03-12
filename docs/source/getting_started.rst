@@ -16,6 +16,11 @@ To use splitcode, first install it from source:
   make install
 
 
+Graphical User Interface (GUI)
+^^^^^^^^^^^^
+To use splitcode's GUI, please visit `https://pachterlab.github.io/splitcode/ <https://pachterlab.github.io/splitcode/>`_
+
+
 Command-line structure
 ^^^^^^^^^^^^^^^^^^^^^^
 To retrieve a list of random ingredients,
