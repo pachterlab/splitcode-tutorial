@@ -3,8 +3,8 @@
 # -- Project information
 
 project = 'splitcode'
-copyright = '2022, Delaney Sullivan'
-author = 'Delaney Sullivan'
+copyright = '2023, Delaney K. Sullivan, Lior Pachter'
+author = 'Delaney K. Sullivan, Lior Pachter'
 
 release = '0.1'
 master_doc = 'index'
