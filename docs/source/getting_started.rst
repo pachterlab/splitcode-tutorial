@@ -18,7 +18,12 @@ To use splitcode, first install it from source:
 
 Graphical User Interface (GUI)
 ^^^^^^^^^^^^
-To use splitcode's GUI, please visit `https://pachterlab.github.io/splitcode/ <https://pachterlab.github.io/splitcode/>`_
+To use splitcode's GUI, please visit `https://pachterlab.github.io/splitcode/ <https://pachterlab.github.io/splitcode/>`_ (Note: GUI is still under development)
+
+.. note::
+
+   This GUI is under development and is a work in progress.
+
 
 
 Command-line structure
