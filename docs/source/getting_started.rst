@@ -7,7 +7,7 @@ To use splitcode, first install it from source:
 
 .. code-block:: shell
 
-  git clone https://github.com/Yenaled/splitcode.git
+  git clone https://github.com/pachterlab/splitcode
   cd splitcode
   mkdir build
   cd build
