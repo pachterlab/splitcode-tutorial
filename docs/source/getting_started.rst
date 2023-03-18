@@ -45,7 +45,7 @@ Overview
 Tags
 ~~~~
 
-splitcode is organized such that ``tags``, the technical sequences that can be identified in reads, are supplied in a tab-separated value ``config file`` by the user. The rows of the config file contain the user-supplied ``sequences`` while the columns of the config file describe the properties of each sequence. Each sequence is associated with a tag via a tag ID and multiple sequences can be associated with the same tag ID (e.g. if you want to treat AAAA and TTTT as the same, you can give the same tag ID). Each row of the config file describes a tag and each column of the config file is for a certain property of the tag (e.g. tag ID, tag sequence, error tolerance, tag group, etc. all comprise the columns).
+splitcode is organized such that ``tags``, the technical sequences that can be identified in reads, are supplied in a tab-separated value ``config file`` by the user. The rows of the config file contain the user-supplied ``sequences`` while the columns of the config file describe the properties of each sequence. Each sequence is associated with a tag via a tag ID and multiple sequences can be associated with the same tag ID (e.g. if you want to treat AAAA and TTTT as the same, you can give the same tag ID). Each row of the config file describes a tag and each column of the config file is for a certain property of the tag (e.g. tag ID, tag sequence, error tolerance, tag group, etc. all comprise the columns). splitcode identifies tags within sequencing reads by scanning each read from beginning to end.
 
 In summary: A ``config file`` contains ``sequences`` which are organized into ``tags``, which are in turn organized into ``tag groups``.
 
@@ -83,11 +83,11 @@ Next, let's create a sample FASTQ file called ``intro.fastq`` with the following
  @read1
  GGGATCGCCC
  +
- ##########
+ !!!!!!!!!!
  @read2
  ATCGTTTTTT
  +
- ##########
+ !!!!!!!!!!
 
 
 Then, run the following: 
@@ -103,11 +103,11 @@ The resulting output will be as follows:
  @read1
  GGGTTTTCCC
  +
- ###KKKK###
+ !!!KKKK!!!
  @read2
  TTTTTTTTTT
  +
- KKKK######
+ KKKK!!!!!!
 
 As you can see from the output, the sequence ATCG has been replaced with TTTT. Also note that the quality scores are set to ``K`` -- every new nucleotide that splitcode inserts will always have this quality score. The ``--nFastqs=1`` argument means that we're only considering one FASTQ file as part of a set of reads. If we had two FASTQ files as part of our set of reads (as is the case with paired-end reads), we'd set that value to 2. The ``--pipe`` argument means that we're writing the results directly to standard output. If we wanted to write to a file called output.fastq, we would not use that argument; instead, we would supply ``-o output.fastq``.
 
