@@ -49,7 +49,7 @@ splitcode is organized such that ``tags``, the technical sequences that can be i
 
 .. seealso::
 
-   :ref:`FAQ:_Tag questions?`
+   :ref:`FAQ:_Tag questions`
      FAQ about when to use same tag ID vs. different tag IDs for sequences, how to supply sequences stored in an external file, and how does splitcode prioritize which sequence in a read to identify when there are multiple possibilities.
 
 In summary: The ``config file`` contains ``sequences`` which are organized into ``tags``, which are in turn organized into ``tag groups``.
