@@ -19,6 +19,7 @@ splitcode
 
    user_guide
    reference_guide
+   FAQ
 
 .. toctree::
   :maxdepth: 2
