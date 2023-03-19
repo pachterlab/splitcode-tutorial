@@ -107,7 +107,8 @@ Output into Separate Files
 .. code-block:: shell
 
   splitcode -c config.txt --nFastqs=2 --assign \
-  --mapping=mapping.txt -o output_R1.fastq,output_R2.fastq --unassigned=unassigned_R1.fastq,unassigned_R2.fastq \
+  -o output_R1.fastq,output_R2.fastq --unassigned=unassigned_R1.fastq,unassigned_R2.fastq \
+  --mapping=mapping.txt \
   --mod-names --com-names --seq-names \
   R1.fastq R2.fastq
 
