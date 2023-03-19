@@ -1,0 +1,64 @@
+{
+	"splitcode_version": "0.28.0",
+	"call": "./splitcode/build/src/splitcode -c config.txt --nFastqs=2 --assign -o output_R1.fastq,output_R2.fastq --unassigned=unassigned_R1.fastq,unassigned_R2.fastq --mapping=mapping.txt --summary=summary.txt R1.fastq R2.fastq",
+	"barcode_prefix": "",
+	"n_fastqs": 2,
+	"n_processed": 4,
+	"n_reads_max": 4,
+	"n_assigned": 3,
+	"read_length_mean": [46.0, 100.0],
+	"read_length_min": [46, 100],
+	"read_length_max": [46, 100],
+	"tags_info": {
+		"n_tags": 5,
+		"n_tag_ids": 5,
+		"n_tag_groups": 2
+	},
+	"general_trimming_info": {
+		"trim_5_bases": "",
+		"trim_3_bases": "0,4",
+		"filter_len": "",
+		"n_reads_filtered_out": 0,
+		"n_reads_filtered_out_assigned": 0,
+		"n_reads_total_trimmed_5": [0, 0],
+		"n_reads_total_trimmed_3": [0, 4],
+		"n_bases_total_trimmed_5": [0, 0],
+		"n_bases_total_trimmed_3": [0, 16],
+		"n_reads_total_trimmed_5_assigned": [0, 0],
+		"n_reads_total_trimmed_3_assigned": [0, 3],
+		"n_bases_total_trimmed_5_assigned": [0, 0],
+		"n_bases_total_trimmed_3_assigned": [0, 12],
+		"final_read_length_mean_assigned": [46.0, 96.0],
+		"final_read_length_min_assigned": [46, 96],
+		"final_read_length_max_assigned": [46, 96]
+	},
+	"quality_trimming_info": {
+		"quality_trim_5": 0,
+		"quality_trim_3": 0,
+		"quality_trim_pre": 0,
+		"quality_trim_naive": 0,
+		"quality_trim_threshold": -1,
+		"quality_phred64": 0,
+		"n_reads_quality_trimmed_5": [0, 0],
+		"n_reads_quality_trimmed_3": [0, 0],
+		"n_bases_quality_trimmed_5": [0, 0],
+		"n_bases_quality_trimmed_3": [0, 0],
+		"n_reads_quality_trimmed_5_assigned": [0, 0],
+		"n_reads_quality_trimmed_3_assigned": [0, 0],
+		"n_bases_quality_trimmed_5_assigned": [0, 0],
+		"n_bases_quality_trimmed_3_assigned": [0, 0]
+	},
+	"tag_trimming_info": [
+	],
+	"extraction_info": [
+		{ "name": "umi", "n_reads": 2, "length_mean": 8.0, "length_min": 8, "length_max": 8 }
+	],
+	"developer_use_info": {
+		"tags_vector_size": 5,
+		"tags_map_size": 66,
+		"num_elements_in_tags_map": 66,
+		"assign_id_map_size": 2,
+		"sub_assign_id_map_size": 0,
+		"always_assign": 0
+	}
+}

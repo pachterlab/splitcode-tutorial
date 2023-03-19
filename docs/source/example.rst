@@ -110,16 +110,91 @@ Output into Separate Files
   -o output_R1.fastq,output_R2.fastq --unassigned=unassigned_R1.fastq,unassigned_R2.fastq \
   --mapping=mapping.txt \
   --summary=summary.txt \
-  --mod-names --com-names --seq-names \
   R1.fastq R2.fastq
-  
-Note: The ``--mod-names --com-names --seq-names`` can be omitted (and are typically not used), but we include them here for illustration purposes. They contain information about how splitcode has processed each read, and these options will be further explained shortly.
 
 The following output files will be generated:
 
 * **output_R1.fastq** and **output_R2.fastq**: Generated from the ``-o`` option, these files contain the modified versions of the original R1.fastq and R2.fastq reads. In this case, output_R2.fastq will contain the R2.fastq sequences with the last 4 bases were trimmed and the sequences within the output_R1.fastq will remain unchanged from the R1.fastq input.
-* **mapping.txt**: Generated from the ``--mapping`` option, this file contains the mappings from the permutation of tags identified within reads to the unique final barcodes.
-* **unassigned_R1.fastq** and **unassigned_R2.fastq**: Generated from the ``--unassigned`` option, these files contain the reads that are considered *unassigned*. These sequences in these files are unmodified from the original R1.fastq and R2.fastq reads. By default, unassigned reads are those where no tag sequence could be identified.
-* **summary.txt**: This contains information about the splitcode run.
+* **mapping.txt**: Generated from the ``--mapping`` option, this file contains the mappings from the permutation of tags identified within reads to the unique final barcodes. In the right-most column of this file are numbers indicating how many times each specific mapping was found.
+* **umi.fastq**: This was generated because of the ``@extract {{grp_B}}3<umi[8]>`` option and contains the extracted 8-bp sequences. This file is named umi.fastq because we put the name **umi** in the @extract string (i.e. <**umi**[8]>).
+* **unassigned_R1.fastq** and **unassigned_R2.fastq**: Generated from the ``--unassigned`` option, these files contain the reads that are considered *unassigned*. These sequences in these files are unmodified from the original R1.fastq and R2.fastq reads. By default, unassigned reads are those where no tag sequence could be identified (in this case, read4 is unassigned).
+* **`summary.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/example/summary.txt>`_**: Generated from the ``--summary`` option, this file contains information about the splitcode run.
 
+Now, let's view the output files below:
+
+.. code-block:: text
+  :caption: output_R1.fastq
+
+  @read1
+  AAAAAAAAAAAAAAAAGTGTCAAAAAAAAAACCCGTCCCGTGTCTCTGGGGGGGGGGGGGGG
+  +
+  KKKKKKKKKKKKKKKKCCCFFFFFHHHGGJJJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
+  @read2
+  AAAAAAAAAAAAAAACAAGGAAAAAAAAAAATTTTTTTTTTTTTTTTCCCCCCCCGGGGGCG
+  +
+  KKKKKKKKKKKKKKKKCCCCFFFHHHHJGJJJJJGJJJGJJJJJJJJJJJJJJJJJJJJJJJ
+  @read3
+  AAAAAAAAAAAAAAAAGTGTGAAAAATAAAAAAACCCGTCCCGTGTCTCTGGGGGGGCCCGT
+  +
+  KKKKKKKKKKKKKKKKCCCFFFFHHHHGGGGJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
+
+
+.. code-block:: text
+  :caption: output_R2.fastq
+ 
+  @read1
+  ATCGATATAGAGAGATACGAGAGAGAGAGATATCGAGATAGAGAGGGATTAAAAATTCCGAGACCAAAGCGCGAGCGAGAGNNCGANCGGACTTTT
+  +
+  CCCFFFFFHHHHHJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJHHHHHHFFFDD!!DDD!DDDDDDEDD
+  @read2::[Barcode_A1] CB:Z:AAGGA	BI:i:1
+  ATGGATTTAGCCCGATCCGGGTGGGAGAGATATCGAGATAGAGAGGGATATCCGGGTGGGAGAGATATATCCGGGTGGGAGAGATATGGGAGAGAG
+  +
+  CCCFFFFHHHHHHGJGJJJJJJGJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJHHHHHHFFFFDDDDDDDDDDDDDEDD
+  @read3::[Barcode_A2][Barcode_B2] CB:Z:GTGTGCCCGT	BI:i:0	RX:Z:GTGTCTCT
+  TTCGATATAGAGAGATACGAGAGAGAGAGATATCGAGATAGAGAGGGATTAAAAATTCCGAGACCAAAGCGCGAGCGAGAGGGCGACCGGACTTTT
+  +
+  CCCFFFFFHHHHHJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJHHHHHHFFFDDDDDDDDDDDDDDEDD
+
+
+
+.. code-block:: text
+  :caption: umi.fastq
+
+  @read1::[Barcode_A2][Barcode_B2] CB:Z:GTGTGCCCGT	BI:i:0	RX:Z:GTGTCTCT
+  GTGTCTCT
+  +
+  KKKKKKKK
+  @read2::[Barcode_A1] CB:Z:AAGGA	BI:i:1
+  
+  +
+  
+  @read3::[Barcode_A2][Barcode_B2] CB:Z:GTGTGCCCGT	BI:i:0	RX:Z:GTGTCTCT
+  GTGTCTCT
+  +
+  KKKKKKKK
+
+
+.. code-block:: text
+  :caption: unassigned_R1.fastq
+
+  @read4
+  AAAAAAAAAAATTTTTAAAAAAATAAAAATTTAAAAAAAAAAAAAA
+  +
+  CCCFFFFHHHHGGGGJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
+
+
+.. code-block:: text
+  :caption: unassigned_R2.fastq
+
+  @read4
+  TATCGAGATAGAGAGGGGAGAGATATCGAGATAGAGAGGGATTAAAAATTCCGAGACCAAAGCGCGAGCGAGAGGGCGACCGGACTTTTTAAAAAAAAAA
+  +
+  CCCFFFFFHHHHHJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJHHHHHHFFFDDDDDDDDDDDDDDEDDDDDD
+
+
+.. code-block:: text
+  :caption: mapping.txt
+
+  AAAAAAAAAAAAAAAA	Barcode_A2,Barcode_B2	2
+  AAAAAAAAAAAAAAAC	Barcode_A1	1
 
