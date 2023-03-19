@@ -34,6 +34,55 @@ The **header** in the **config file** indicates the following:
 
 * **@trim-3**: This option specifies trimming from the 3′-end of reads. We have two values here: The first for file #0 (i.e. the R1 file) and the second for file #1 (i.e. R2 file). Thus, ``0,4`` means we trim ``0`` bp's (i.e. no trimming) for file #0 while we trim ``4`` bp's off of the 3′ end of each read in file #1.
 
+
+Sample Reads
+^^^^^^^^^^^^
+
+Below, we'll use four paired-end reads for demonstration purposes:
+
+File #0: R1.fastq
+
+::
+
+ @read1
+ GTGTCAAAAAAAAAACCCGTCCCGTGTCTCTGGGGGGGGGGGGGGG
+ +
+ CCCFFFFFHHHGGJJJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
+ @read2
+ AAGGAAAAAAAAAAATTTTTTTTTTTTTTTTCCCCCCCCGGGGGCG
+ +
+ CCCCFFFHHHHJGJJJJJGJJJGJJJJJJJJJJJJJJJJJJJJJJJ
+ @read3
+ GTGTGAAAAATAAAAAAACCCGTCCCGTGTCTCTGGGGGGGCCCGT
+ +
+ CCCFFFFHHHHGGGGJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
+ @read4
+ AAAAAAAAAAATTTTTAAAAAAATAAAAATTTAAAAAAAAAAAAAA
+ +
+ CCCFFFFHHHHGGGGJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
+ 
+File #1: R2.fastq
+
+::
+
+ @read1
+ ATCGATATAGAGAGATACGAGAGAGAGAGATATCGAGATAGAGAGGGATTAAAAATTCCGAGACCAAAGCGCGAGCGAGAGNNCGANCGGACTTTTNAAA
+ +
+ CCCFFFFFHHHHHJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJHHHHHHFFFDD!!DDD!DDDDDDEDD!DDD
+ @read2
+ ATGGATTTAGCCCGATCCGGGTGGGAGAGATATCGAGATAGAGAGGGATATCCGGGTGGGAGAGATATATCCGGGTGGGAGAGATATGGGAGAGAGGTGG
+ +
+ CCCFFFFHHHHHHGJGJJJJJJGJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJHHHHHHFFFFDDDDDDDDDDDDDEDDDDDD
+ @read3
+ TTCGATATAGAGAGATACGAGAGAGAGAGATATCGAGATAGAGAGGGATTAAAAATTCCGAGACCAAAGCGCGAGCGAGAGGGCGACCGGACTTTTTAAA
+ +
+ CCCFFFFFHHHHHJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJHHHHHHFFFDDDDDDDDDDDDDDEDDEDDD
+ @read4
+ TATCGAGATAGAGAGGGGAGAGATATCGAGATAGAGAGGGATTAAAAATTCCGAGACCAAAGCGCGAGCGAGAGGGCGACCGGACTTTTTAAAAAAAAAA
+ +
+ CCCFFFFFHHHHHJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJHHHHHHFFFDDDDDDDDDDDDDDEDDDDDD
+
+
 Command-Line Run
 ^^^^^^^^^^^^^^^^
 
@@ -41,7 +90,9 @@ Given the above config file, named `config.txt <https://raw.githubusercontent.co
 
 .. code-block:: shell
 
-  splitcode -c config.txt --nFastqs=2 [output options] R1.fastq R2.fastq
+  splitcode -c config.txt --nFastqs=2 --assign [output options] R1.fastq R2.fastq
+
+The ``--assign`` option means that upon identifying the tags in reads, we'll assign the permutation of tags to the ``final barcodes`` such that each permutation gets assigned a unique barcode.
 
 In the next section, we will set the ``[output options]`` to specify how we want the output to be structured.
 
