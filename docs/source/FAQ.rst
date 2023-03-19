@@ -110,10 +110,44 @@ Let's say we have a FASTQ file as follows:
  +
  !!!!!!!!!!!!!!
 
-If we have two sequences `AAGA` and `AAGAT` in your config file, the matching sequence will be `AAGAT` because it's the longer sequence in the read. Therefore, all operations (extraction, substitution, etc.) will be done with respect to `AAGAT` and identified tag will be the tag that is associated with `AAGAT`.
+If we have two sequences ``AAGA`` and ``AAGAT`` in your config file, the matching sequence will be ``AAGAT`` because it's the longer sequence in the read. Therefore, all operations (extraction, substitution, etc.) will be done with respect to ``AAGAT`` and identified tag will be the tag that is associated with ``AAGAT``.
 
 Furthermore, splitcode operates by scanning reads from beginning to end (i.e. from left to right) therefore if two sequences overlap slightly, the left-most sequence will get priority.
 
 .. tip::
 
   It's always good to realize that splitcode scans sequences from beginning to end. If we have two sequences **AAGAT** and **ATTTT** for the FASTQ read above, it's impossible for the latter sequence to be identified. splitcode will identify AAGAT and then move on past those 5 bp's, but the remaining bp's are TTT so there's no way for ATTTT to be found.
+  
+  
+   
+.. _Config file questions:
+
+Config file questions
+---------------------
+
+.. _Empty question:
+
+How to denote an empty value in the config file?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The value ``-`` denotes an empty value. For example, in the **next** column, not every tag will necessarily require a "next" entry to be populated (some tags, when identified, may not require splitcode to search for specific tag or group next). Therefore, for those rows, in the "next" column, simply enter ``-``. 
+
+   
+.. _Performance questions:
+
+Performance questions
+---------------------
+
+.. _Error tolerance performance question:
+
+Why is there a slowdown and high memory usage when I increase the error tolerance?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+splitcode is optimized for finding relatively small sequences (<40 bp's) with few mismatches (hamming distance ≤ 3). Each sequence and all its associated mismatches are indexed therefore a large sequence with many mismatches will naturally decrease the performance of splitcode and could make it computationally intractable to use splitcode under such configurations.
+
+Given that there are 5 bases (A, T, C, G, N), and let L be the sequence length and M be the number of mismatches allowable, the computationally complexity of splitcode scales to the number of mismatches which is as follows:
+
+..math:
+  (5-1)^M(M)
+
+
