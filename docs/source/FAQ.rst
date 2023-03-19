@@ -94,6 +94,11 @@ For the above, each sequence in ``list.txt`` gets assigned the tag ID: **tagA**.
 
 For the above, each sequence in ``list.txt`` gets assigned tag IDs: **tagA-0**, **tagA-1**, **tagA-2**, **tagA-3**, ...
 
+:ref:`Tag identification questions`.
+
+
+:ref:`Tag questions`.
+
 .. _Tag priority question:
 
 How does splitcode prioritize what the matching sequence is?
