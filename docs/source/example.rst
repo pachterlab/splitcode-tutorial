@@ -28,8 +28,11 @@ The tab-delimited **table** in the **config file** indicates the following confi
 
 The **header** in the **config file** indicates the following:
 
-* **@extract**: The expression ``{{grp_B}}3<umi[8]>`` means that once a tag in group ``grp_B`` is found in a read, splitcode will extract a sequence of length ``8``, which we name ``umi``, exactly ``3`` bases after the grp_B tag is found. Thus, the grp_B tag serves as an achor point for extracting the 8-bp sequence.
-* **@trim-3**: This option specifies trimming from the 3′-end of reads. We have two values here: The first for file #0 (i.e. the R1 file) and the second for file #1 (i.e. R2 file). Thus, ``0,4`` means we trim ``0`` bp's (i.e. no trimming) for file #0 while we trim ``4`` bp's off of the 3`` end of each read in file #1.
+* **@extract**: The expression ``{{grp_B}}3<umi[8]>`` means that once a tag in group ``grp_B`` is found in a read, splitcode will extract a sequence of length ``8``, which we name ``umi``, exactly ``3`` bases after the grp_B tag is found. Thus, the grp_B tag serves as an anchor point for extracting the 8-bp sequence.
+
+  * Note: Just like in the "next" column, grp_B is surrounded by two curly braces: ``{{grp_B}}``, which indicates group. If we wanted to extract relative to a tag ID rather than a group, we'd use only one curly brace to enclose the tag ID.
+
+* **@trim-3**: This option specifies trimming from the 3′-end of reads. We have two values here: The first for file #0 (i.e. the R1 file) and the second for file #1 (i.e. R2 file). Thus, ``0,4`` means we trim ``0`` bp's (i.e. no trimming) for file #0 while we trim ``4`` bp's off of the 3′ end of each read in file #1.
 
 Command-Line Run
 ^^^^^^^^^^^^^^^^
