@@ -147,7 +147,8 @@ splitcode is optimized for finding relatively small sequences (<40 bp's) with fe
 
 Given that there are 5 bases (A, T, C, G, N), and let L be the sequence length and M be the number of mismatches allowable, the computationally complexity of splitcode scales to the number of mismatches which is as follows:
 
-..math:
+.. math::
+
   (5-1)^M(M)
 
 
