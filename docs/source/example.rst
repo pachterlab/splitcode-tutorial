@@ -294,4 +294,8 @@ As you can see, all the output is interleaved such that each read gets four sequ
 
 None of the unassigned reads are outputted although you can direct the unassigned reads to a file using the ``--unassigned`` option just like in the previous section.
 
+Colab
+^^^^^
+
+A Google colab notebook on installing splitcode, running it on this example, and viewing its output can be found here: `splitcode_example.ipynb <https://github.com/pachterlab/splitcode-tutorial/blob/main/colab/splitcode_example.ipynb>`_.
 
