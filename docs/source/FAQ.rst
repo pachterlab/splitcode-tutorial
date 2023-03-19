@@ -149,6 +149,6 @@ Given that there are 5 bases (A, T, C, G, N), and let L be the sequence length a
 
 .. math::
 
-  (5-1)^M\binom(L,M)
+  (5-1)^M\binom{L}{M}
 
 
