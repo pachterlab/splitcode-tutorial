@@ -99,5 +99,14 @@ In the next section, we will set the ``[output options]`` to specify how we want
 Output
 ^^^^^^
 
+Given `R1.fastq <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/example/R1.fastq>`_, `R2.fastq <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/example/R2.fastq>`_, and `config.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/example/config.txt>`_, we can specify the ``[output options]`` when running splitcode to indicate how we want to output to be structured.
+
+Output into Separate Files
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: shell
+
+  splitcode -c config.txt --nFastqs=2 --assign --mapping=mapping.txt -o output_R1.fastq,output_R2.fastq --unassigned=unassigned_R1.fastq,unassigned_R2.fastq --mod-names --com-names --seq-names R1.fastq R2.fastq
+
 
 
