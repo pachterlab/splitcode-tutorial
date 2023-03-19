@@ -40,7 +40,7 @@ Sample Reads
 
 Below, we'll use four paired-end reads for demonstration purposes:
 
-File #0: R1.fastq
+File #0: `R1.fastq <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/example/R1.fastq>`_
 
 .. code-block:: text
 
@@ -61,7 +61,7 @@ File #0: R1.fastq
  +
  CCCFFFFHHHHGGGGJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
  
-File #1: R2.fastq
+File #1: `R2.fastq <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/example/R2.fastq>`_
 
 .. code-block:: text
 
