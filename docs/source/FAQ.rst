@@ -99,4 +99,21 @@ For the above, each sequence in ``list.txt`` gets assigned tag IDs: **tagA-0**, 
 How does splitcode prioritize what the matching sequence is?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+The matching sequence is prioritized by length (with longest sequence getting the highest priority).
 
+Let's say we have a FASTQ file as follows:
+
+::
+
+ @read1
+ AAAAAAAAGATTTT
+ +
+ !!!!!!!!!!!!!!
+
+If we have two sequences `AAGA` and `AAGAT` in your config file, the matching sequence will be `AAGAT` because it's the longer sequence in the read. Therefore, all operations (extraction, substitution, etc.) will be done with respect to `AAGAT` and identified tag will be the tag that is associated with `AAGAT`.
+
+Furthermore, splitcode operates by scanning reads from beginning to end (i.e. from left to right) therefore if two sequences overlap slightly, the left-most sequence will get priority.
+
+.. tip::
+
+  It's always good to realize that splitcode scans sequences from beginning to end. If we have two sequences **AAGAT** and **ATTTT** for the FASTQ read above, it's impossible for the latter sequence to be identified. splitcode will identify AAGAT and then move on past those 5 bp's, but the remaining bp's are TTT so there's no way for ATTTT to be found.
