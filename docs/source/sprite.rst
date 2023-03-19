@@ -1,4 +1,0 @@
-SPRITE
-======
-
-Hello world

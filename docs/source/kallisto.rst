@@ -1,4 +1,0 @@
-kallisto
-========
-
-Hello World

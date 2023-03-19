@@ -26,5 +26,4 @@ splitcode
   :maxdepth: 2
   :caption: Tutorials:
 
-  kallisto
-  sprite
+  streaming

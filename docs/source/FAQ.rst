@@ -145,7 +145,7 @@ Why is there a slowdown and high memory usage when I increase the error toleranc
 
 splitcode is optimized for finding relatively small sequences (<40 bp's) with few mismatches (hamming distance ≤ 3). Each sequence and all its associated mismatches are indexed therefore a large sequence with many mismatches will naturally decrease the performance of splitcode and could make it computationally intractable to use splitcode under such configurations.
 
-Given that there are 5 bases (A, T, C, G, N), and let L be the sequence length and M be the number of mismatches allowable, the computationally complexity of splitcode scales to the number of mismatches which is as follows:
+Given that there are 5 bases (A, T, C, G, N), and let L be the sequence length and M be the number of mismatches allowable, the computationally complexity of splitcode scales to the number of mismatches for a certain sequence length which is as follows:
 
 .. math::
 
