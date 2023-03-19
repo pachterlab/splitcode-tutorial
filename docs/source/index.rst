@@ -12,6 +12,7 @@ splitcode
    :caption: Introduction:
 
    getting_started
+   example
 
 .. toctree::
    :maxdepth: 1
