@@ -108,7 +108,7 @@ Output into Separate Files
 
   splitcode -c config.txt --nFastqs=2 --assign \
   -o output_R1.fastq,output_R2.fastq --unassigned=unassigned_R1.fastq,unassigned_R2.fastq \
-  --mapping=mapping.txt \
+  --outb=final_barcodes.fastq --mapping=mapping.txt \
   --summary=summary.txt \
   R1.fastq R2.fastq
 
@@ -116,6 +116,7 @@ The following output files will be generated:
 
 * **output_R1.fastq** and **output_R2.fastq**: Generated from the ``-o`` option, these files contain the modified versions of the original R1.fastq and R2.fastq reads. In this case, output_R2.fastq will contain the R2.fastq sequences with the last 4 bases were trimmed and the sequences within the output_R1.fastq will remain unchanged from the R1.fastq input.
 * **mapping.txt**: Generated from the ``--mapping`` option, this file contains the mappings from the permutation of tags identified within reads to the unique final barcodes. In the right-most column of this file are numbers indicating how many times each specific mapping was found.
+* **final_barcodes.fastq**: Generated from the ``--outb`` option, this file contains the sequences of the unique final barcodes. Each of these sequences corresponds to those in output_R1.fastq and output_R2.fastq, and the mappings between these sequences and the tags are stored in mapping.txt.
 * **umi.fastq**: This was generated because of the ``@extract {{grp_B}}3<umi[8]>`` option and contains the extracted 8-bp sequences. This file is named umi.fastq because we put the name `umi` in the @extract string. For files in which grp_B was not identified, no extraction was performed and therefore those sequences will be blank in umi.fastq (in this case, read2).
 * **unassigned_R1.fastq** and **unassigned_R2.fastq**: Generated from the ``--unassigned`` option, these files contain the reads that are considered *unassigned*. These sequences in these files are unmodified from the original R1.fastq and R2.fastq reads. By default, unassigned reads are those where no tag sequence could be identified (in this case, read4 is unassigned).
 * `summary.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/example/summary.txt>`_: Generated from the ``--summary`` option, this file contains information about the splitcode run.
@@ -154,6 +155,23 @@ Now, let's view the output files below:
   TTCGATATAGAGAGATACGAGAGAGAGAGATATCGAGATAGAGAGGGATTAAAAATTCCGAGACCAAAGCGCGAGCGAGAGGGCGACCGGACTTTT
   +
   CCCFFFFFHHHHHJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJHHHHHHFFFDDDDDDDDDDDDDDEDD
+
+
+.. code-block:: text
+  :caption: final_barcodes.fastq
+ 
+  @read1
+  AAAAAAAAAAAAAAAA
+  +
+  KKKKKKKKKKKKKKKK
+  @read2
+  AAAAAAAAAAAAAAAC
+  +
+  KKKKKKKKKKKKKKKK
+  @read3
+  AAAAAAAAAAAAAAAA
+  +
+  KKKKKKKKKKKKKKKK
 
 
 
