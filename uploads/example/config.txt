@@ -1,0 +1,8 @@
+@extract {{grp_B}}3<umi[8]>
+@trim-3 0,4
+groups	ids		tags	distances	next		maxFindsG	locations
+grp_A	Barcode_A1	AAGGA	1		{{grp_B}}	1		0:0:5
+grp_A	Barcode_A2	GTGTG	1		{{grp_B}}	1		0:0:5
+grp_A	Barcode_A3	CGTAT	1		{{grp_B}}	1		0:0:5
+grp_B	Barcode_B1	GCGCAA	0		-		1		0:5:100
+grp_B	Barcode_B2	CCCGT	0		-		1		0:5:100
