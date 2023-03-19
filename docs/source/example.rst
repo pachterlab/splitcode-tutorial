@@ -42,7 +42,7 @@ Below, we'll use four paired-end reads for demonstration purposes:
 
 File #0: R1.fastq
 
-::
+.. code-block:: text
 
  @read1
  GTGTCAAAAAAAAAACCCGTCCCGTGTCTCTGGGGGGGGGGGGGGG
@@ -63,7 +63,7 @@ File #0: R1.fastq
  
 File #1: R2.fastq
 
-::
+.. code-block:: text
 
  @read1
  ATCGATATAGAGAGATACGAGAGAGAGAGATATCGAGATAGAGAGGGATTAAAAATTCCGAGACCAAAGCGCGAGCGAGAGNNCGANCGGACTTTTNAAA
