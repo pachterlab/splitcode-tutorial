@@ -37,12 +37,13 @@ The **header** in the **config file** indicates the following:
 Command-Line Run
 ^^^^^^^^^^^^^^^^
 
-Given the above config file, named config.txt, the structure of our command will look as follows:
+Given the above config file, named `config.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/example/config.txt>`_, the structure of our command will look as follows:
 
 .. code-block:: shell
 
   splitcode -c config.txt --nFastqs=2 [output options] R1.fastq R2.fastq
 
+In the next section, we will set the ``[output options]`` to specify how we want the output to be structured.
 
 
 Output
