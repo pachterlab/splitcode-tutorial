@@ -203,10 +203,77 @@ Now, let's view the output files below:
 Pipe Output
 ~~~~~~~~~~~
 
-Now, let's say we want all of our output as a continuous stream written to standard output, rather than separating everything into separate files. We can do this via the ``-pipe`` option.
+Now, let's say we want all of our output as a continuous stream written to standard output, rather than separating everything into separate files. We can do this via the ``--pipe`` option.
 
 .. code-block:: shell
 
   splitcode -c config.txt --nFastqs=2 --assign --pipe --mapping=mapping.txt R1.fastq R2.fastq
+
+Only one file: mapping.txt will be created. Everything else will be written to standard output.
+
+The resulting output will look as follows:
+
+
+.. code-block:: text
+
+  @read1
+  AAAAAAAAAAAAAAAA
+  +
+  KKKKKKKKKKKKKKKK
+  @read1
+  GTGTCTCT
+  +
+  KKKKKKKK
+  @read1
+  GTGTCAAAAAAAAAACCCGTCCCGTGTCTCTGGGGGGGGGGGGGGG
+  +
+  CCCFFFFFHHHGGJJJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
+  @read1
+  ATCGATATAGAGAGATACGAGAGAGAGAGATATCGAGATAGAGAGGGATTAAAAATTCCGAGACCAAAGCGCGAGCGAGAGNNCGANCGGACTTTT
+  +
+  CCCFFFFFHHHHHJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJHHHHHHFFFDD!!DDD!DDDDDDEDD
+  @read2
+  AAAAAAAAAAAAAAAC
+  +
+  KKKKKKKKKKKKKKKK
+  @read2
+  
+  +
+  
+  @read2
+  AAGGAAAAAAAAAAATTTTTTTTTTTTTTTTCCCCCCCCGGGGGCG
+  +
+  CCCCFFFHHHHJGJJJJJGJJJGJJJJJJJJJJJJJJJJJJJJJJJ
+  @read2
+  ATGGATTTAGCCCGATCCGGGTGGGAGAGATATCGAGATAGAGAGGGATATCCGGGTGGGAGAGATATATCCGGGTGGGAGAGATATGGGAGAGAG
+  +
+  CCCFFFFHHHHHHGJGJJJJJJGJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJHHHHHHFFFFDDDDDDDDDDDDDEDD
+  @read3
+  AAAAAAAAAAAAAAAA
+  +
+  KKKKKKKKKKKKKKKK
+  @read3
+  GTGTCTCT
+  +
+  KKKKKKKK
+  @read3
+  GTGTGAAAAATAAAAAAACCCGTCCCGTGTCTCTGGGGGGGCCCGT
+  +
+  CCCFFFFHHHHGGGGJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
+  @read3
+  TTCGATATAGAGAGATACGAGAGAGAGAGATATCGAGATAGAGAGGGATTAAAAATTCCGAGACCAAAGCGCGAGCGAGAGGGCGACCGGACTTTT
+  +
+  CCCFFFFFHHHHHJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJHHHHHHFFFDDDDDDDDDDDDDDEDD
+
+
+
+As you can see, all the output is interleaved such that each read gets four sequences associated with it and all four sequences are outputted in order before moving on to the next read. The four sequences per read are (in order):
+
+#. The unique final barcode
+#. The extracted sequence (umi)
+#. The output R1 sequence
+#. The output R2 sequence
+
+None of the unassigned reads are outputted although you can direct the unassigned reads to a file using the ``--unassigned`` option just like in the previous section.
 
 
