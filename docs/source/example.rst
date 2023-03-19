@@ -109,12 +109,17 @@ Output into Separate Files
   splitcode -c config.txt --nFastqs=2 --assign \
   -o output_R1.fastq,output_R2.fastq --unassigned=unassigned_R1.fastq,unassigned_R2.fastq \
   --mapping=mapping.txt \
+  --summary=summary.txt \
   --mod-names --com-names --seq-names \
   R1.fastq R2.fastq
+  
+Note: The ``--mod-names --com-names --seq-names`` can be omitted (and are typically not used), but we include them here for illustration purposes. They contain information about how splitcode has processed each read, and these options will be further explained shortly.
 
 The following output files will be generated:
 
-* **output_R1.fastq** and **output_R2.fastq**
-* **mapping.txt**
-* **unassigned_R1.fastq** and **unassigned_R2.fastq**
+* **output_R1.fastq** and **output_R2.fastq**: Generated from the ``-o`` option, these files contain the modified versions of the original R1.fastq and R2.fastq reads. In this case, output_R2.fastq will contain the R2.fastq sequences with the last 4 bases were trimmed and the sequences within the output_R1.fastq will remain unchanged from the R1.fastq input.
+* **mapping.txt**: Generated from the ``--mapping`` option, this file contains the mappings from the permutation of tags identified within reads to the unique final barcodes.
+* **unassigned_R1.fastq** and **unassigned_R2.fastq**: Generated from the ``--unassigned`` option, these files contain the reads that are considered *unassigned*. These sequences in these files are unmodified from the original R1.fastq and R2.fastq reads. By default, unassigned reads are those where no tag sequence could be identified.
+* **summary.txt**: This contains information about the splitcode run.
+
 
