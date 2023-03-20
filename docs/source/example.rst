@@ -1,10 +1,10 @@
 .. raw:: html
 
     <style>
-    .red {color: #AF2318}
-    .green {color: #3F552A}
-    .yellow {color: #775E1C}
-    .blue {color: #263861}
+    .red {color: red}
+    .green {color: green}
+    .yellow {color: yellow}
+    .blue {color: blue}
     .black {color: black}
     </style>
 
@@ -227,7 +227,9 @@ Now, let's view the output files below:
   AAAAAAAAAAAAAAAA	Barcode_A2,Barcode_B2	2
   AAAAAAAAAAAAAAAC	Barcode_A1	1
 
+.. hint::
 
+  Observe how **maxGroupsG** works: Even though **read3** has another **grp_B** tag, ``CCCGT``, at the very end and it falls within the ``0:5:100`` location, we don't identify it because we've already identified another **grp_B** tag earlier on the read.
 
 Pipe Output
 ~~~~~~~~~~~
