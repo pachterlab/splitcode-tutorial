@@ -15,7 +15,7 @@ Example
 Read structure
 ^^^^^^^^^^^^^^
 
-:red:`The` structure of the reads from this hypothetical sequencing technology (see image below) contains multiple regions that need to be parsed, including some of variable length.
+The structure of the reads from this hypothetical sequencing technology (see image below) contains multiple regions that need to be parsed, including some of variable length.
 
 .. image:: https://raw.githubusercontent.com/pachterlab/splitcode/main/figures/splitcode_example.png
   :width: 725
@@ -55,22 +55,22 @@ File #0: `R1.fastq <https://raw.githubusercontent.com/pachterlab/splitcode-tutor
 
 .. raw:: html
 
- <div><pre>@read1
+ <div class="highlight-text notranslate"><div class="highlight"><pre>@read1
  <span class="red">GTGTC</span><span class="black">AAAAAAAAAA</span><span class="blue">CCCGT</span><span class="green">CCC</span><span class="yellow">GTGTCTCT</span><span class="black">GGGGGGGGGGGGGGG</span>
  +
  CCCFFFFFHHHGGJJJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
  @read2
- AAGGAAAAAAAAAAATTTTTTTTTTTTTTTTCCCCCCCCGGGGGCG
+ <span class="red">AAGGA</span><span class="black">AAAAAAAAAATTTTTTTTTTTTTTTTCCCCCCCCGGGGGCG</span>
  +
  CCCCFFFHHHHJGJJJJJGJJJGJJJJJJJJJJJJJJJJJJJJJJJ
  @read3
- GTGTGAAAAATAAAAAAACCCGTCCCGTGTCTCTGGGGGGGCCCGT
+ <span class="red">GTGTG</span><span class="black">AAAAATAAAAAAA</span><span class="blue">CCCGT</span><span class="green">CCC</span><span class="yellow">GTGTCTCT</span><span class="black">GGGGGGGCCCGT</span>
  +
  CCCFFFFHHHHGGGGJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
  @read4
- AAAAAAAAAAATTTTTAAAAAAATAAAAATTTAAAAAAAAAAAAAA
+ <span class="black">AAAAAAAAAAATTTTTAAAAAAATAAAAATTTAAAAAAAAAAAAAA</span>
  +
- CCCFFFFHHHHGGGGJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ</pre></div>
+ CCCFFFFHHHHGGGGJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ</pre></div></div>
  
 File #1: `R2.fastq <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/example/R2.fastq>`_
 
