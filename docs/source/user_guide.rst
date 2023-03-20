@@ -17,7 +17,7 @@ To extract relative to a tag or tag group, specify the following four things:
 #. The **name** you want to give the that sequence you want to extract
 #. The **length** of the sequence you want to extract
 
-For example, to extract a 6-bp sequence, which you decide to name **xxx**, immediately following identification of the tag with tag ID: **BC**, you'd write in the config file header: ``@extract {BC}<xxx[6]>``. Now let's say you want to extract the 6-bp sequence 2 bp's following identification of **BC**. You'd then write instead: ``@extract {BC}2<xxx[6]>``. You could also extract the 6-bp sequence 2 bp's *before* **BC** via ``@extract <xxx[6]>2{BC}``. What happens because we named it **xxx**? Our output file name would be named **xxx.fastq** or ***xxx.fastq.gz** (in the case that we're working with compressed gzip'd files).
+For example, to extract a 6-bp sequence, which you decide to name **xxx**, immediately following identification of the tag with tag ID: **BC**, you'd write in the config file header: ``@extract {BC}<xxx[6]>``. Now let's say you want to extract the 6-bp sequence 2 bp's following identification of **BC**. You'd then write instead: ``@extract {BC}2<xxx[6]>``. You could also extract the 6-bp sequence 2 bp's *before* **BC** via ``@extract <xxx[6]>2{BC}``. What happens because we named it **xxx**? Our output file name would be named **xxx.fastq** or **xxx.fastq.gz** (in the case that we're working with compressed gzip'd files).
 
 .. seealso::
 
@@ -25,15 +25,3 @@ For example, to extract a 6-bp sequence, which you decide to name **xxx**, immed
      The example in this documentation provides a sample usage of the ``@extract`` directive.
 
 
-Here are some more examples:
-
-
-Link to example
-
-Extraction in between
-
-Multiple extractions
-
-Reverse complement extractions
-
-Stitching togethher
