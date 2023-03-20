@@ -1,10 +1,17 @@
+.. raw:: html
+
+    <style> .red {color:red} </style>
+
+.. role:: red
+
+
 Example
 =======
 
 Read structure
 ^^^^^^^^^^^^^^
 
-The structure of the reads from this hypothetical sequencing technology (see image below) contains multiple regions that need to be parsed, including some of variable length.
+:red:`The` structure of the reads from this hypothetical sequencing technology (see image below) contains multiple regions that need to be parsed, including some of variable length.
 
 .. image:: https://raw.githubusercontent.com/pachterlab/splitcode/main/figures/splitcode_example.png
   :width: 725
@@ -45,7 +52,7 @@ File #0: `R1.fastq <https://raw.githubusercontent.com/pachterlab/splitcode-tutor
 .. code-block:: text
 
  @read1
- GTGTCAAAAAAAAAACCCGTCCCGTGTCTCTGGGGGGGGGGGGGGG
+ :red:`GTG`TCAAAAAAAAAACCCGTCCCGTGTCTCTGGGGGGGGGGGGGGG
  +
  CCCFFFFFHHHGGJJJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
  @read2
