@@ -21,15 +21,15 @@ To extract relative to a tag or tag group, specify the following four things:
 
 For example, to extract a 6-bp sequence, which you decide to name **xxx**, immediately following identification of the tag with tag ID: **BC**, you'd write in the config file header:
 
-``@extract {BC}<xxx[6]>``.
+``@extract {BC}<xxx[6]>``
 
 Now let's say you want to extract the 6-bp sequence 2 bp's following identification of **BC**. You'd then write instead:
 
-``@extract {BC}2<xxx[6]>``.
+``@extract {BC}2<xxx[6]>``
 
 You could also extract the 6-bp sequence 2 bp's *before* **BC** via:
 
-``@extract <xxx[6]>2{BC}``.
+``@extract <xxx[6]>2{BC}``
 
 What happens because we named it **xxx**? Our output file name would be named **xxx.fastq** or **xxx.fastq.gz** (in the case that we're working with compressed gzip'd files).
 
@@ -46,11 +46,11 @@ In addition to extracting sequences relative to a tag, you can also extract sequ
 
 For example, given two files: R1.fastq and R2.fastq, to extract an 8-bp sequence (named xxx) following the first 10 bp's of R2.fastq, you'd write:
 
-``@extract 1:10<xxx[8]>``.
+``@extract 1:10<xxx[8]>``
 
 Additionally, you can use **-1** if you want to extract a sequence at the end of the read; for example, you can extract the last 8-bp of reads in R2.fastq by writing:
 
-``@extract <xxx[8]>1:-1``.
+``@extract <xxx[8]>1:-1``
 
 
 Extracting between two things
@@ -60,42 +60,65 @@ splitcode allows you to extract sequences between two tags or between a location
 
 * Extracting between two tags: If you want to extract a sequence between a tag with tag id **tag_A** and a tag in the group **group_1**, you can write:
   
-  ``@extract {tag_A}<xxx>{{group_1}}``.
+  ``@extract {tag_A}<xxx>{{group_1}}``
 * Extracting between a tag and a location: If you want to extract a sequence between the tag **tag_A** and position 30 of the reads in the FASTQ file #0, you can write the following:
   
-  ``@extract {tag_A}<xxx>{{group_1}}``.
+  ``@extract {tag_A}<xxx>{{group_1}}``
 
 .. tip::
 
-   If the extraction fails (e.g. you specify ``@extract {tag_A}<xxx>{tag_B}`` but you don't encounter an instance of tag_A followed by tag_B), the extracted sequence will be empty. You can also put more constraints on the extraction: say you want to extract between tag_A and the end of the read in FASTQ file #0, but only if the extracted sequence is between 2 and 4 bp's in length, you can specify this as ``@extract {tag_A}<xxx[2-4]>0:-1``. If this criteria is not met, the extracted sequence will be empty.
+   The extraction can sometimes fail. For example, if you enter the following:
+   
+   ``@extract {tag_A}<xxx>{tag_B}``
+   
+   But you don't encounter an instance of tag_A followed by tag_B), the extracted sequence will be empty. You can also put more constraints on the extraction: say you want to extract between tag_A and the end of the read in FASTQ file #0, but only if the extracted sequence is between 2 and 4 bp's in length, you can specify this as:
+   
+   ``@extract {tag_A}<xxx[2-4]>0:-1``
+   
+   If this criteria is not met, the extracted sequence will be empty.
 
 .. tip::
 
-   You can still use spacers when extracting between two tags. For example ``@extract {tag_A}1<xxx>2{tag_B}`` means the extraction begins 1 bp after tag_A and 2 bp's before tag_B.
+   You can still use spacers when extracting between two tags. For example, if you want the to begin 1 bp after tag_A and 2 bp's before tag_B, you'd write:
+   
+   ``@extract {tag_A}1<xxx>2{tag_B}``
 
 Extracting tags as-is
 ~~~~~~~~~~~~~~~~~~~~~
 
 Although we oftentimes want to extract unknown sequences, sometimes we might also want to extract the tags supplied in the config file when they are identified. This is useful for isolating identified tag sequences into their own separate file. There are a few options we have here:
 
-* Extracting tags in its unmodified form: Using ``@extract <xxx{tag_A}>`` allows us to extract the sequence associated with the tag named **tag_A** exactly as it is specified in the config file when the tag is identified within a read.
-* Extracting tags as found in reads via ``@``: Using ``@extract <xxx{@tag_A}>`` allows us to extract the sequence associated with the tag named **tag_A** in its form found in the read when the tag is identified within a read. Unlike the above, if the tag sequence as found in the read has mismatches, the mismatched sequence is extracted (not the original sequence as specified in the config file).
-* Extracting tag substitutions via ``#``: Using ``@extract <xxx{#tag_A}>`` allows us to extract the substituted sequence (i.e. the sequence supplied in the ``subs`` column for **tag_A** in the config file) upon encountering **tag_A** in a read.
-* Extracting all tags stitched together via ``{*}``: Using ``@extract <xxx{*}>`` allows us to extract all successfully identified tag sequences stitched together.
+* Extracting tags in its unmodified form:
+  
+  ``@extract <xxx{tag_A}>`` allows us to extract the sequence associated with the tag named **tag_A** exactly as it is specified in the config file when the tag is identified within a read.
+
+* Extracting tags as found in reads via ``@``:
+  
+  ``@extract <xxx{@tag_A}>`` allows us to extract the sequence associated with the tag named **tag_A** in its form found in the read when the tag is identified within a read. Unlike the above, if the tag sequence as found in the read has mismatches, the mismatched sequence is extracted (not the original sequence as specified in the config file).
+
+* Extracting tag substitutions via ``#``:
+
+  ``@extract <xxx{#tag_A}>`` allows us to extract the substituted sequence (i.e. the sequence supplied in the ``subs`` column for **tag_A** in the config file) upon encountering **tag_A** in a read.
+
+* Extracting all tags stitched together via ``{*}``:
+
+  ``@extract <xxx{*}>`` allows us to extract all successfully identified tag sequences stitched together.
 
 .. tip::
 
-   These options can be used in conjunction with other options.
+   These options can be used in conjunction with other options. See the following:
    
-   For example, ``@extract <xxx[15-25]{*}>`` means only do the extraction if the sequence generated by stitching all sequences (in the form found in the config file) together is between 15 and 25 bp's in length.
+   ``@extract <xxx[15-25]{*}>`` means only do the extraction if the sequence generated by stitching all sequences (in the form found in the config file) together is between 15 and 25 bp's in length.
    
-   Also, ``@extract <xxx{#*}>`` means extracting the substituted sequences of the identified tags all stitched together.
+   ``@extract <xxx{#*}>`` means extracting the substituted sequences of the identified tags all stitched together.
 
 
 Reverse complementing extracted sequence
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can extract the reverse complement of a sequence by putting a ``~`` in front of the extracted sequence name. For example ``@extract {tag_A}<~xxx[8]>`` will extract the reverse complement of the 8-bp sequence immediately following the tag **tag_A**.
+You can extract the reverse complement of a sequence by putting a ``~`` in front of the extracted sequence name. For example, to extract the reverse complement of the 8-bp sequence immediately following the tag **tag_A**, do the following:
+
+``@extract {tag_A}<~xxx[8]>``
 
 
 
