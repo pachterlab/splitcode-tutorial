@@ -8,6 +8,7 @@
     .black {color: black}
     </style>
 
+.. _example page:
 
 Example
 =======
