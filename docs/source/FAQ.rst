@@ -132,6 +132,21 @@ How to denote an empty value in the config file?
 
 The value ``-`` denotes an empty value. For example, in the **next** column, not every tag will necessarily require a "next" entry to be populated (some tags, when identified, may not require splitcode to search for specific tag or group next). Therefore, for those rows, in the "next" column, simply enter ``-``. 
 
+.. _CL questions:
+
+Command-line questions
+----------------------
+
+.. _CL assign question:
+
+When should I use --assign when running splitcode?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You should use the ``--assign`` option whenever you want to create a unique identifier (i.e. a **final barcode**) for each permutation of tags identified (i.e. when the tags identified and the order in which they are identified is important). For example, if you want ``tag_A,tag_B,tag_C`` to get an ID and ``tag_A,tag_C,tag_B`` to get another ID and ``tag_B,tag_B,tag_A`` to get another ID, then use ``--assign``. This is especially useful for complex technical sequences with many components, such as those from split-pool assays with many rounds of split-pooling.
+
+.. hint::
+
+   If you want to exclude a tag from being considered in forming the **final barcode**, then set the value ``1`` for that tag in the ``exclude`` column of the config file.
    
 .. _Performance questions:
 
