@@ -25,4 +25,25 @@ For example, to extract a 6-bp sequence, which you decide to name **xxx**, immed
    :ref:`example page`
      The example in this documentation provides a sample usage of the ``@extract`` directive.
 
+Extracting relative to a location
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to extracting sequences relative to a tag, you can also extract sequences relative to a location (i.e. a specific file at a specific read position). The location is specified as ``file:position`` where **file** is the zero-indexed file number (i.e. file #0, file #1, etc.) and **position** is the position within the read (again, zero-indexed, such that 0 means you're starting at the beginning of the read).
+
+For example, given two files: R1.fastq and R2.fastq, to extract an 8-bp sequence (named xxx) following the first 10 bp's of R2.fastq, you'd write ``@extract 1:10<xxx[8]>``. Additionally, you can use **-1** if you want to extract a sequence at the end of the read; for example, you can extract the last 8-bp of reads in R2.fastq by writing ``@extract <xxx[8]>1:-1``.
+
+
+
+Extracting between two things
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+splitcode allows you to extract sequences between two tags or between a location and a tag (in effect, *sandwiching* a sequence to be extracted). In this configuration, you don't need to specify a length for the sequence you want to extract. Here are some examples:
+
+* Extracting between two tags: If you want to extract a sequence between a tag with tag id **tag_A** and a tag in the group **group_1**, you can write ``@extract {tag_A}<xxx>{{group_1}}``.
+* Extracting between a tag and a location: If you want to extract a sequence between the tag **tag_A** and position 30 of the reads in the FASTQ file #0, you can write ``@extract {tag_A}<xxx>{{group_1}}``.
+
+.. tip::
+
+   If the extraction fails (e.g. you specify extracting between tag_A and tag_B but you don't encounter an instance of tag_A followed by tag_B), the extracted sequence will be empty. You can also put more constraints on the extraction: say you want to extract between tag_A and the end of the read in FASTQ file #0, but only if the extracted sequence is between 2 and 4 bp's in length, you can specify this as ``{tag_A}<xxx[2-4]>0:-1``. If this criteria is not met, the extracted sequence will be empty.
+
 
