@@ -8,7 +8,8 @@ Extraction
 
 Sequences that you want to extract can be specified in the **config file header** using the `@extract` directive followed by an expression of what you want to extract and how. The extraction options are listed below:
 
-Extracting relative to a tag or tag group:
+Extracting relative to a tag or tag group
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To extract relative to a tag or tag group, specify the following four things:
 
