@@ -62,7 +62,7 @@ A permutation of tags identified within a read forms a unique ``barcode``. This 
 Extraction
 ~~~~~~~~~~
 
-
+Sometimes important technical sequences are unknown (such as in the case of UMIs) and we need to pick them out from reads based on their absolute location within reads or based on their location relative to a tag. It is possible to isolate such sequences by using an :ref:`extraction expression<Extraction guide>`.
 
 Output
 ~~~~~~
