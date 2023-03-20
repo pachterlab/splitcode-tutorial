@@ -142,11 +142,25 @@ Command-line questions
 When should I use --assign when running splitcode?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You should use the ``--assign`` option whenever you want to create a unique identifier (i.e. a **final barcode**) for each permutation of tags identified (i.e. when the tags identified and the order in which they are identified is important). For example, if you want ``tag_A,tag_B,tag_C`` to get an ID and ``tag_A,tag_C,tag_B`` to get another ID and ``tag_B,tag_B,tag_A`` to get another ID, then use ``--assign``. This is especially useful for complex technical sequences with many components, such as those from split-pool assays with many rounds of split-pooling.
+You should use the ``--assign`` option whenever you want to create a unique identifier (i.e. a 16-bp **final barcode**) for each permutation of tags identified (i.e. when the tags identified and the order in which they are identified is important). For example, if you want ``tag_A,tag_B,tag_C`` to get an ID and ``tag_A,tag_C,tag_B`` to get another ID and ``tag_B,tag_B,tag_A`` to get another ID, then use ``--assign``. This is especially useful for complex technical sequences with many components, such as those from split-pool assays with many rounds of split-pooling.
 
 .. hint::
 
    If you want to exclude a tag from being considered in forming the **final barcode**, then set the value ``1`` for that tag in the ``exclude`` column of the config file.
+
+
+How do I specify the output of the final barcodes?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The **final barcodes** obtained by ``--assign`` (see above) can be outputted in several ways.
+
+* ``--outb``: Use this option to specify an output filename where you want the final barcode sequences to be outputted in FASTQ format.
+* ``--pipe``: Use this option to interleave the final barcode sequences as the first sequence in each read when writing output to standard output.
+* ``--no-outb``: Use this option to not output the final barcode sequences at all.
+* ``--com-names``: Use this option to include a numerical ID representing the final barcode into the header of each FASTQ read (i.e. in the "read name" row of each read). IDs will be formatted in **SAM tag** format like ``SI:i:0``, ``SI:i:1``, ``SI:i:2``, etc. because many downstream tools can process SAM tags included in FASTQ read headers. The numerical ID corresponds precisely to the line number (zero-indexed) of the **mapping file**.
+* Default: When neither ``--outb`` nor ``--no-outb`` are specified, the final barcode sequences are simply prepended to the reads of the first output FASTQ file.
+
+The **mapping file** (to map between final barcodes and the tags that form it) is specified via the ``--mapping`` option. The final barcodes will always be sorted in the same order in each run (i.e. AAAAAAAAAAAAAAAA is always the first final barcode, AAAAAAAAAAAAAAAT is always the second final barcode, etc.). Therefore, when using numerical IDs via ``--com-names``, you know that ``SI:i:0`` will always be ``AAAAAAAAAAAAAAAA``.
    
 .. _Performance questions:
 
