@@ -229,7 +229,7 @@ Now, let's view the output files below:
 
 .. hint::
 
-  Observe how **maxGroupsG** works: Even though **read3** has another **grp_B** tag, ``CCCGT``, at the very end and it falls within the ``0:5:100`` location, we don't identify it because we've already identified another **grp_B** tag earlier on the read.
+  Observe how **maxFindsG** works: Even though **read3** has another **grp_B** tag, ``CCCGT``, at the very end and it falls within the ``0:5:100`` location, we don't identify it because we've already identified another **grp_B** tag earlier on the read.
 
 Pipe Output
 ~~~~~~~~~~~
