@@ -1,7 +1,7 @@
-User guide
-==========
-
 .. _Extraction guide:
+
+User guide: Extraction
+======================
 
 Extraction
 ^^^^^^^^^^

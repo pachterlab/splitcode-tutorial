@@ -22,7 +22,7 @@ splitcode
    :maxdepth: 1
    :caption: Contents:
 
-   user_guide
+   user_guide_extraction
    reference_guide
    FAQ
 
