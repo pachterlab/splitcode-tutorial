@@ -61,9 +61,10 @@ splitcode allows you to extract sequences between two tags or between a location
 * Extracting between two tags: If you want to extract a sequence between a tag with tag id **tag_A** and a tag in the group **group_1**, you can write:
   
   ``@extract {tag_A}<xxx>{{group_1}}``
+
 * Extracting between a tag and a location: If you want to extract a sequence between the tag **tag_A** and position 30 of the reads in the FASTQ file #0, you can write the following:
   
-  ``@extract {tag_A}<xxx>{{group_1}}``
+  ``@extract {tag_A}<xxx>0:30``
 
 .. tip::
 
@@ -98,7 +99,7 @@ Although we oftentimes want to extract unknown sequences, sometimes we might als
 
 * Extracting tag substitutions via ``#``:
 
-  ``@extract <xxx{#tag_A}>`` allows us to extract the substituted sequence (i.e. the sequence supplied in the ``subs`` column for **tag_A** in the config file) upon encountering **tag_A** in a read.
+  ``@extract <xxx{#tag_A}>`` allows us to extract the substituted sequence (i.e. the sequence supplied in the **subs** column for **tag_A** in the config file) upon encountering **tag_A** in a read.
 
 * Extracting all tags stitched together via ``{*}``:
 
