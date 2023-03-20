@@ -44,6 +44,9 @@ splitcode allows you to extract sequences between two tags or between a location
 
 .. tip::
 
-   If the extraction fails (e.g. you specify extracting between tag_A and tag_B but you don't encounter an instance of tag_A followed by tag_B), the extracted sequence will be empty. You can also put more constraints on the extraction: say you want to extract between tag_A and the end of the read in FASTQ file #0, but only if the extracted sequence is between 2 and 4 bp's in length, you can specify this as ``{tag_A}<xxx[2-4]>0:-1``. If this criteria is not met, the extracted sequence will be empty.
+   If the extraction fails (e.g. you specify ``@extract {tag_A}<xxx>{tag_B}`` but you don't encounter an instance of tag_A followed by tag_B), the extracted sequence will be empty. You can also put more constraints on the extraction: say you want to extract between tag_A and the end of the read in FASTQ file #0, but only if the extracted sequence is between 2 and 4 bp's in length, you can specify this as ``@extract {tag_A}<xxx[2-4]>0:-1``. If this criteria is not met, the extracted sequence will be empty.
 
+Reverse complementing extracted sequence
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+You can extract the reverse complement of a sequence by putting a ``~`` in front of the extracted sequence name. For example ``@extract {tag_A}<~xxx[8]>`` will extract the reverse complement of the 8-bp sequence immediately following the tag **tag_A**.
