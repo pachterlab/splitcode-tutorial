@@ -1,8 +1,12 @@
 .. raw:: html
 
-    <style> .red {color:red} </style>
-
-.. role:: red
+    <style>
+    .red {color: #AF2318}
+    .green {color: #3F552A}
+    .yellow {color: #775E1C}
+    .blue {color: #263861}
+    .black {color: black}
+    </style>
 
 
 Example
@@ -49,10 +53,10 @@ Below, we'll use four paired-end reads for demonstration purposes:
 
 File #0: `R1.fastq <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/example/R1.fastq>`_
 
-.. code-block:: text
+.. raw:: html
 
- @read1
- :red:`GTG`TCAAAAAAAAAACCCGTCCCGTGTCTCTGGGGGGGGGGGGGGG
+ <div><pre>@read1
+ <span class="red">GTGTC</span><span class="black">AAAAAAAAAA</span><span class="blue">CCCGT</span><span class="green">CCC</span><span class="yellow">GTGTCTCT</span><span class="black">GGGGGGGGGGGGGGG</span>
  +
  CCCFFFFFHHHGGJJJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
  @read2
@@ -66,7 +70,7 @@ File #0: `R1.fastq <https://raw.githubusercontent.com/pachterlab/splitcode-tutor
  @read4
  AAAAAAAAAAATTTTTAAAAAAATAAAAATTTAAAAAAAAAAAAAA
  +
- CCCFFFFHHHHGGGGJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ
+ CCCFFFFHHHHGGGGJJGGJJJJJJJJJJJJJJJJJJJJJIJIIGJ</pre></div>
  
 File #1: `R2.fastq <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/example/R2.fastq>`_
 
