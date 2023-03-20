@@ -33,6 +33,7 @@ splitcode
   streaming
 
 
-**Citation**
+
+**Citation:**
 
 Sullivan DK, Pachter L. (2023) splitcode. http://github.com/pachterlab/splitcode.
