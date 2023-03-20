@@ -3,7 +3,7 @@
     <style>
     .red {color: red}
     .green {color: green}
-    .yellow {color: yellow}
+    .yellow {color: #E6B93C}
     .blue {color: blue}
     .black {color: black}
     </style>
