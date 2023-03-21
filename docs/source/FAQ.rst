@@ -110,7 +110,7 @@ Let's say we have a FASTQ file as follows:
  +
  !!!!!!!!!!!!!!
 
-If we have two sequences ``AAGA`` and ``AAGAT`` in your config file, the matching sequence will be ``AAGAT`` because it's the longer sequence in the read. Therefore, all operations (extraction, substitution, etc.) will be done with respect to ``AAGAT`` and identified tag will be the tag that is associated with ``AAGAT``.
+If we have two sequences ``AAGA`` and ``AAGAT`` in your config file, the matching sequence will be ``AAGAT`` because it's the longer sequence in the read. Therefore, all operations (extraction, substitution, etc.) will be done with respect to ``AAGAT``. Note: Those two sequences **must** have the **same tag ID** otherwise neither will match since technically a collision has occurred (i.e. both sequences are possible matches). See :ref:`Sequences same tag question`_.
 
 Furthermore, splitcode operates by scanning reads from beginning to end (i.e. from left to right) therefore if two sequences overlap slightly, the left-most sequence will get priority.
 
