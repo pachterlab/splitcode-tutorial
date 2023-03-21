@@ -5,10 +5,10 @@ Reference guide
 Config file options
 ^^^^^^^^^^^^^^^^^^^
 
-Sequence Identification Options
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Table Options
+~~~~~~~~~~~~~
 
-These options are supplied as a tab-delimited table in the config file, with each option being a column.
+These options are supplied as a tab-delimited table in the config file, with each option being a column. These options are used for tag sequence identification.
 
 .. list-table:: 
    :widths: 15 35 35 15 
@@ -82,6 +82,25 @@ These options are supplied as a tab-delimited table in the config file, with eac
      - Adapter trimming for adapters at the 3′ end
      - Experimental; Still under development
      - 
+
+Header Options
+~~~~~~~~~~~~~~
+
+These options are supplied at the very beginning of the config file, with each option being a line that begins with ``@``. These options are used for read modification and extraction.
+
+.. list-table:: 
+   :widths: 15 15 70 
+   :header-rows: 1
+
+   * - Option
+     - Example
+     - Description
+   * - @extract
+     - {tag_A}<umi[8]>
+     - Extracts UMI-like sequences
+   * - @no-chain
+     - 
+     - Disable stitching extracted sequences of the same name together
 
 Command-line options
 ^^^^^^^^^^^^^^^^^^^^
