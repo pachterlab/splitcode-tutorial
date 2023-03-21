@@ -137,6 +137,10 @@ Multiple extraction sequences
 * Multiple extractions specified (comma-separated) using *different* names: Each extraction gets put in a different file.
 
   ``@extract {tag_A}<xxx[8]>,{{group_2}}<rrr[3]>``: For each encounter of **tag_A**, splitcode will extract the 8-bp's following it and put it into **xxx.fastq**. For each encounter of **group_2**, splitcode will extract the 3 bp's following it and put it into **rrr.fastq**. If, instead, **--pipe** is used as output, the interleaved output will consist of two separate read sequences: the ***xxx*** read sequence, then the **rrr** read sequence, right before the rest of the output read sequences.
+  
+.. tip::
+
+   ``@no-chain`` specified in the config file header can disable the "stitching" behavior such that only the first encounter of a name (e.g. xxx) is extracted.
 
 Output options
 ~~~~~~~~~~~~~~
