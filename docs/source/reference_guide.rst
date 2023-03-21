@@ -89,7 +89,7 @@ Header Options
 These options are supplied at the very beginning of the config file, with each option being a line that begins with ``@``. These options are used for read modification and extraction.
 
 .. list-table:: 
-   :widths: 15 15 70 
+   :widths: 20 20 60 
    :header-rows: 1
 
    * - Option
