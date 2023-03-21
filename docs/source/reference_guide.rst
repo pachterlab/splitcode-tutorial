@@ -10,7 +10,7 @@ Sequence Identification Options
 
 These options are supplied as a tab-delimited table in the config file, with each option being a column.
 
-.. list-table:: Case 1
+.. list-table:: 
    :widths: 15 35 35 15 
    :header-rows: 1
 
