@@ -115,7 +115,25 @@ These options are supplied at the very beginning of the config file, with each o
      - Filter reads based on length (min_length:max_length)
    * - @qtrim
      - 30
-     - Threshold for quality trimming
+     - Threshold for quality trimming (uses `cutadapt algorithm <https://cutadapt.readthedocs.io/en/stable/algorithms.html#quality-trimming-algorithm>`_)
+   * - @qtrim-naive
+     - 
+     - Switch quality trimming algorithm to naive one (trim until a base that meets quality threshold is found)
+   * - @qtrim-5
+     - 
+     - Enable quality trimming from 5′ end of each read
+   * - @qtrim-3
+     - 
+     - Enable quality trimming from 3′ end of each read
+   * - @qtrim-pre
+     - 
+     - Do quality trimming first (i.e. before all the operations involving tags)
+   * - @phred64
+     - 
+     - Use the old phred+64 quality scores instead of the newer phred+33 scores
+   * - @prefix
+     - CG
+     - Bases that will prefix each 16-bp final barcode sequence (useful for merging separate experiments)
 
 Command-line options
 ^^^^^^^^^^^^^^^^^^^^
