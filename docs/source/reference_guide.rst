@@ -101,9 +101,6 @@ These options are supplied at the very beginning of the config file, with each o
    * - @no-chain
      - 
      - Disable stitching multiple extracted sequences together
-   * - @extract
-     - {tag_A}<umi[8]>
-     - Extracts UMI-like sequences
    * - @trim-5
      - 4
      - Number of bases to trim from 5′ end (done first before any tag operations or other trimming operations)
