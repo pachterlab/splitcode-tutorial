@@ -32,7 +32,7 @@ These options are supplied as a tab-delimited table in the config file, with eac
      - grp_A
    * - distances
      - Allowable error tolerance
-     - Supports setting hamming distance allowance, indel allowance, and total error (hamming+indel) allowance.
+     - Supports setting hamming distance, indel, and total error (hamming+indel) allowance.
      - 2
    * - locations
      - Where a tag should be searched for in a read
@@ -55,11 +55,11 @@ These options are supplied as a tab-delimited table in the config file, with eac
      - Once this is reached, the program simply stops looking for any tag belonging to that group
      - 5
    * - left
-     - Whether the tag should be a left trimming point (0 = no; 1 = yes)
+     - Whether tag should be a left trimming point (0 = no; 1 = yes)
      - At the location the tag is found, that tag and all bases to the left of the tag in the read are removed
      - 1
    * - right
-     - Whether the tag should be a right trimming point (0 = no; 1 = yes)
+     - Whether tag should be a right trimming point (0 = no; 1 = yes)
      - At the location the tag is found, that tag and all bases to the right of the tag in the read are removed
      - 0
    * - next
@@ -72,7 +72,7 @@ These options are supplied as a tab-delimited table in the config file, with eac
      - {{grp_A}}
    * - subs
      - Sequence to substitute tag with when tag is found in read
-     - Note: This is useful for error correction and one can also specify substituting the original tag sequence in if an error-corrected version of the tag was found
+     - Note: Useful for error correction: one can specify substituting the original tag sequence in if a mismatched version was found
      - NNNN
    * - partial5
      - Adapter trimming for adapters at the 5′ end
