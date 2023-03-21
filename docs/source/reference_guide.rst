@@ -100,7 +100,19 @@ These options are supplied at the very beginning of the config file, with each o
      - Extracts UMI-like sequences
    * - @no-chain
      - 
-     - Disable stitching extracted sequences of the same name together
+     - Disable stitching multiple extracted sequences together
+   * - @extract
+     - {tag_A}<umi[8]>
+     - Extracts UMI-like sequences
+   * - @trim-5
+     - 4
+     - Number of bases to trim from 5′ end of each read
+   * - @trim-3
+     - 6
+     - Number of bases to trim from 3′ end of each read
+   * - @filter-len
+     - 10-100
+     - Filter reads based on length (min_length:max_length)
 
 Command-line options
 ^^^^^^^^^^^^^^^^^^^^
