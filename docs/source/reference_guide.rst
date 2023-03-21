@@ -1,6 +1,91 @@
 Reference guide
 ===============
 
+
+Config file options
+^^^^^^^^^^^^^^^^^^^
+
+Sequence Identification Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+These options are supplied as a tab-delimited table in the config file, with each option being a column.
+
+.. list-table:: Case 1
+   :widths: 15 35 35 15 
+   :header-rows: 1
+
+   * - Option
+     - Description
+     - Additional info
+     - Example
+   * - tags
+     - Tag sequence
+     - String of ATCG bases. Alternately, can supply a file containing multiple tag sequences.
+     - GGATC
+   * - ids
+     - Tag name/ID
+     - 
+     - tag_A
+   * - groups
+     - Tag group name/ID
+     - Tags can be grouped together under a group name.
+     - grp_A
+   * - distances
+     - Allowable error tolerance
+     - Supports setting hamming distance allowance, indel allowance, and total error (hamming+indel) allowance.
+     - 2
+   * - locations
+     - Where a tag should be searched for in a read
+     - Can specify file, start position, and end position.
+     - 0:5:13
+   * - minFinds
+     - Minimum number of times a tag must be found in a read
+     - If this isn’t met, the read is discarded
+     - 3
+   * - minFindsG
+     - Minimum number of times a tag *group* must be found in a read
+     - If this isn’t met, the read is discarded
+     - 3
+   * - maxFinds
+     - Maximum number of times a tag must be found in a read
+     - Once this is reached, the program simply stops looking for that tag
+     - 5
+   * - maxFindsG
+     - Maximum number of times a tag *group* must be found in a read
+     - Once this is reached, the program simply stops looking for any tag belonging to that group
+     - 5
+   * - left
+     - Whether the tag should be a left trimming point (0 = no; 1 = yes)
+     - At the location the tag is found, that tag and all bases to the left of the tag in the read are removed
+     - 1
+   * - right
+     - Whether the tag should be a right trimming point (0 = no; 1 = yes)
+     - At the location the tag is found, that tag and all bases to the right of the tag in the read are removed
+     - 0
+   * - next
+     - What tag ID or group ID must come after the tag
+     - When the tag is found, only the tag ID or group ID specified as "next" will be searched for
+     - {tag_A}
+   * - previous
+     - What tag ID or group ID must come before the tag
+     - The tag will not be searched for unless the tag ID or group ID specified as "previous" was found right before
+     - {{grp_A}}
+   * - subs
+     - Sequence to substitute tag with when tag is found in read
+     - Note: This is useful for error correction and one can also specify substituting the original tag sequence in if an error-corrected version of the tag was found
+     - NNNN
+   * - partial5
+     - Adapter trimming for adapters at the 5′ end
+     - Experimental; Still under development
+     - 
+   * - partial3
+     - Adapter trimming for adapters at the 3′ end
+     - Experimental; Still under development
+     - 
+
+Command-line options
+^^^^^^^^^^^^^^^^^^^^
+
 splitcode help menu which can be accessed via ``splitcode -h``
 
 .. note::
