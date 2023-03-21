@@ -31,7 +31,7 @@ You could also extract the 6-bp sequence 2 bp's *before* **BC** via:
 
 ``@extract <xxx[6]>2{BC}``
 
-What happens because we named it **xxx**? Our output file name would be named **xxx.fastq** or **xxx.fastq.gz** (in the case that we're working with compressed gzip'd files).
+What happens because we named it **xxx**? Our output file name would be named **xxx.fastq** or **xxx.fastq.gz** (in the case that we're working with compressed gzip'd files). If using **--pipe**, the output gets interleaved into the standard output stream and the extracted sequence will appear in the output right before the read sequences.
 
 .. seealso::
 
@@ -121,5 +121,36 @@ You can extract the reverse complement of a sequence by putting a ``~`` in front
 
 ``@extract {tag_A}<~xxx[8]>``
 
+.. _Multiple extractions guide:
 
+Multiple extraction sequences
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+* Multiple instances of a single extraction within a read: They get stitched together.
+
+  ``@extract {tag_A}<xxx[8]>`` if encountered multiple times in a read: splitcode will extract all instances of the 8-bp sequence following **tag_A** whenever **tag_A** is identified within the read. All those 8-bp extracted sequences will be stitched together into a single sequence in the final **xxx.fastq** file (or in the interleaved output when using **--pipe**).
+
+* Multiple extractions specified (comma-separated) using the same name: Each extraction gets stitched together.
+
+  ``@extract {tag_A}<xxx[8]>,{{group_2}}<xxx[3]>``: With each encounter of **tag_A** or **group_2**, splitcode will keep adding on the extracted sequence (the next 8 bp's for **tag_A** or the next 3 bp's for **group_2**) to form a single final sequence that gets placed in the resulting **xxx.fastq** file (or in the interleaved output when using **--pipe**).
+
+* Multiple extractions specified (comma-separated) using *different* names: Each extraction gets put in a different file.
+
+  ``@extract {tag_A}<xxx[8]>,{{group_2}}<rrr[3]>``: For each encounter of **tag_A**, splitcode will extract the 8-bp's following it and put it into **xxx.fastq**. For each encounter of **group_2**, splitcode will extract the 3 bp's following it and put it into **rrr.fastq**. If, instead, **--pipe** is used as output, the interleaved output will consist of two separate read sequences: the ***xxx*** read sequence, then the **rrr** read sequence, right before the rest of the output read sequences.
+
+Output options
+~~~~~~~~~~~~~~
+
+In addition to the default output options (named FASTQ files or interleaved output via pipe), there are additional output options you can specify for extracted sequences:
+
+* **--empty** Use this to enter a sequence to put in place of empty sequences in case the final extracted read sequence has nothing in it.
+
+   * **--empty-remove**: Use this to completely remove empty sequences from output (Warning: This will end up breaking the proper pairing of reads with one another).
+
+   * Note: These options apply to all read sequences that might be empty, not just extracted read sequences.
+
+* **--x-only** Use this to output only all of the extracted sequences (and the final barcodes if **--assign** is supplied) but do NOT output the other read sequences.
+
+* **--x-names** Use this to put the extracted sequences into the header of the FASTQ file. By default, the extracted sequences will be prepended with the SAM tag **RX:Z:**, such as RX:Z:GATGATGG or RX:Z:GATGATGG-ATCC (in the case that two different names are given) in the read name header. This is so that downstream tools can make use of the SAM tags.
+
+* **--no-x-out** Use this to not output extracted sequences; this should be used with **--x-names** because if that option is supplied, the extracted sequences will still appear in the read name header. In other words, use these two options together if you prefer your extracted sequences to be in the read header (e.g. as SAM tags) rather than outputted in FASTQ format.
