@@ -151,6 +151,6 @@ In addition to the default output options (named FASTQ files or interleaved outp
 
 * **--x-only** Use this to output only all of the extracted sequences (and the final barcodes if **--assign** is supplied) but do NOT output the other read sequences.
 
-* **--x-names** Use this to put the extracted sequences into the header of the FASTQ file. By default, the extracted sequences will be prepended with the SAM tag **RX:Z:**, such as RX:Z:GATGATGG or RX:Z:GATGATGG-ATCC (in the case that two different names are given) in the read name header. This is so that downstream tools can make use of the SAM tags.
+* **--x-names** Use this to put the extracted sequences into the header of the FASTQ file. By default, the extracted sequences will be prepended with the SAM tag **RX:Z:**, such as *RX:Z:GATGATGG* or *RX:Z:GATGATGG-ATCC* (in the case that two different names are given) in the read name header. This is so that downstream tools can make use of the SAM tags.
 
 * **--no-x-out** Use this to not output extracted sequences; this should be used with **--x-names** because if that option is supplied, the extracted sequences will still appear in the read name header. In other words, use these two options together if you prefer your extracted sequences to be in the read header (e.g. as SAM tags) rather than outputted in FASTQ format.
