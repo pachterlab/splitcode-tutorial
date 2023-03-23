@@ -26,12 +26,6 @@ splitcode
    reference_guide
    FAQ
 
-.. toctree::
-  :maxdepth: 2
-  :caption: Tutorials:
-
-  streaming
-
 
 
 **Citation:**
