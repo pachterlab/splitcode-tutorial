@@ -30,4 +30,4 @@ splitcode
 
 **Citation:**
 
-`Sullivan DK, Pachter L. (2023). Flexible parsing and preprocessing of technical sequences with splitcode. bioRxiv 2023.03.20.533521. <https://doi.org/10.1101/2023.03.20.533521>`_
+Sullivan DK, Pachter L. (2023). Flexible parsing and preprocessing of technical sequences with splitcode. *bioRxiv 2023.03.20.533521*.  `https://doi.org/10.1101/2023.03.20.533521 <https://doi.org/10.1101/2023.03.20.533521>`_
