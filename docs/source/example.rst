@@ -232,6 +232,8 @@ Now, let's view the output files below:
 
   Observe how **maxFindsG** works: Even though **read3** has another **grp_B** tag, ``CCCGT``, at the very end and it falls within the ``0:5:100`` location, we don't identify it because we've already identified another **grp_B** tag earlier on the read.
 
+  There are four possibilities for identified tags: **grp_A** followed by **grp_B**, **grp_A** only, **grp_B** only, and no tags identified. This is thanks to the combination of the **maxFindsG**, **next**, and **locations** config options.
+
 Pipe Output
 ~~~~~~~~~~~
 
