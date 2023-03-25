@@ -144,6 +144,8 @@ When should I use --assign when running splitcode?
 
 You should use the ``--assign`` option whenever you want to create a unique identifier (i.e. a 16-bp **final barcode**) for each permutation of tags identified (i.e. when the tags identified and the order in which they are identified is important). For example, if you want ``tag_A,tag_B,tag_C`` to get an ID and ``tag_A,tag_C,tag_B`` to get another ID and ``tag_B,tag_B,tag_A`` to get another ID, then use ``--assign``. This is especially useful for complex technical sequences with many components, such as those from split-pool assays with many rounds of split-pooling.
 
+A second reason to use ``--assign`` is if you want only certain reads that meet a *tag condition* to be outputted. This means that all reads that **don't meet the minFinds/minFindsG** criteria (i.e. aren't found the minimum number of times specified) or have **zero tags identified** will be considered **unassigned**. Those unassigned reads can be written to separate output files via the ``--unassigned`` option. If the ``--assign`` option is *not* specified, those unassigned reads will still be outputted as normal with the rest of the output.
+
 .. hint::
 
    If you want to exclude a tag from being considered in forming the **final barcode**, then set the value ``1`` for that tag in the ``exclude`` column of the config file.
