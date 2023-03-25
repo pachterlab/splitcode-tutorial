@@ -168,6 +168,19 @@ How do I specify multiple FASTQ files to be processed at once?
 
 You can specify multiple FASTQ files on the command-line via the ``--nFastqs`` option. If you set ``--nFastqs=2`` (which is what you want to do for paired-end reads), both read pairs will be processed together. If you set that and supply 6 FASTQ files, the first two FASTQ files will be processed together as a pair, then the next 2 FASTQ files will be processed together as a pair, followed by the final 2 FASTQ files. You can also set ``--nFastqs`` to be a number greater than 2; for instance, if you have I1 and I2 indices and R1 and R2 reads that you want all processed as a single read set, you can simply set ``--nFastqs=4``.
 
+
+.. _GUI questions:
+
+GUI questions
+-------------
+
+
+Why does the GUI produce empty output when I click run even though I know my entered sequence should result in some output?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The most common cause of this issue is that the input you entered is not in FASTQ format. Each sequence in your input must consist of four lines exactly in FASTQ format. This also means **your quality scores MUST be of the same length as the sequence**. When playing around with different sequences, make absolutely sure you adjust the length of the quality scores line as well.
+
+
 .. _Performance questions:
 
 Performance questions
