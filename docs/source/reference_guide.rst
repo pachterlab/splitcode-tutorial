@@ -75,13 +75,13 @@ These options are supplied as a tab-delimited table in the config file, with eac
      - Note: Useful for error correction: one can specify substituting the original tag sequence in if a mismatched version was found
      - NNNN
    * - partial5
-     - Adapter trimming for adapters at the 5′ end
-     - Experimental; Still under development
-     - 
+     - Identifies sequences that may be truncated at the 5′ end
+     - Specify the minimum bp's that must match and the allowable substitution mismatch frequency (min_match:mismatch_freq)
+     - 3:0.1
    * - partial3
-     - Adapter trimming for adapters at the 3′ end
-     - Experimental; Still under development
-     - 
+     - Identifies sequences that may be truncated at the 3′ end
+     - Specify the minimum bp's that must match and the allowable substitution mismatch frequency (min_match:mismatch_freq)
+     - 3:0.1
 
 Header Options
 ~~~~~~~~~~~~~~
