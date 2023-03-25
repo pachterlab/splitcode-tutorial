@@ -46,6 +46,5 @@ In the **minFinds** column (for tags) or the **minFindsG** column (for groups), 
    As with **initiator** and **terminator**, the minimum finds policy applies to each file *individually* (i.e. we must find the tag in each file a minimumm number of times) unless the **locations** column is set to specify a specific file.
    
    
-
-
+   
 
