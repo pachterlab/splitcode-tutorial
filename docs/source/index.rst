@@ -5,7 +5,7 @@ splitcode
 
 .. note::
 
-   This project is under active development.
+   The documentation is under active development. splitcode itself is fully ready to use but new features may be added in response to user feedback.
    
 .. image:: https://raw.githubusercontent.com/pachterlab/splitcode/main/figures/splitcode_figure.png
   :width: 725
