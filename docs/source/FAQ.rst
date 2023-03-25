@@ -162,6 +162,12 @@ The **final barcodes** obtained by ``--assign`` (see above) can be outputted in 
 
 The **mapping file** (to map between final barcodes and the tags that form it) is specified via the ``--mapping`` option. The final barcodes will always be sorted in the same order in each run (i.e. AAAAAAAAAAAAAAAA is always the first final barcode, AAAAAAAAAAAAAAAT is always the second final barcode, etc.). Therefore, when using numerical IDs via ``--com-names``, you know that ``SI:i:0`` will always be ``AAAAAAAAAAAAAAAA``.
    
+
+How do I specify multiple FASTQ files to be processed at once?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can specify multiple FASTQ files on the command-line via the ``--nFastqs`` option. If you set ``--nFastqs=2`` (which is what you want to do for paired-end reads), both read pairs will be processed together. If you set that and supply 6 FASTQ files, the first two FASTQ files will be processed together as a pair, then the next 2 FASTQ files will be processed together as a pair, followed by the final 2 FASTQ files. You can also set ``--nFastqs`` to be a number greater than 2; for instance, if you have I1 and I2 indices and R1 and R2 reads that you want all processed as a single read set, you can simply set ``--nFastqs=4``.
+
 .. _Performance questions:
 
 Performance questions
