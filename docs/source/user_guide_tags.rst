@@ -31,20 +31,22 @@ For sequences supplied in the **tags** column, you can also specify whether that
    Additionally, by default, the initiator and terminator policy applies to each file *individually*. Say we have paired-end reads (e.g. ``--nFastqs=2``) if a terminator is found in file #0, we'll stop our search in file #0 but we'll begin anew in file #1. This behavior is overwritten if we explicitly set the **locations** column to specify file number.
 
 
-Minimum Finds
-^^^^^^^^^^^^^
+Minimum Finds and Maximum Finds
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In the **minFinds** column (for tags) or the **minFindsG** column (for groups), you can enter the minimum number of times a tag or group must be found. If this isn't met, then the read is considered **unassigned** which means if we specify ``--assign`` on the command line, the read won't be outputted nor will it be assigned a final barcode (if we specify files in the ``--unassigned`` option, those reads will be written there).
+**minFindsG** column: You can enter the minimum number of times a group must be found. If this isn't met, then the read is considered **unassigned** which means if we specify ``--assign`` on the command line, the read won't be outputted nor will it be assigned a final barcode (if we specify files in the ``--unassigned`` option, those reads will be written there).
+
+**minFinds** column: You can enter the minimum number of times a tag must be found. If this isn't met, then the read is considered **unassigned**.
+
 
 .. seealso::
 
    :ref:`CL assign question`
      FAQ about how assigned/unassigned works in splitcode.
 
-.. note::
+**maxFindsG** column: You can enter the maximum number of times a group can be found. Once this max number is met, splitcode will no longer identify the group. Unlike minimimum finds, this does **not** cause a read to go unassigned; rather, splitcode will simply stop identifying the group for which this max number has been met.
 
-   As with **initiator** and **terminator**, the minimum finds policy applies to each file *individually* (i.e. we must find the tag in each file a minimumm number of times) unless the **locations** column is set to specify a specific file.
-   
-   
-   
+**maxFinds** column: You can enter the maximum number of times a tag can be found. Once this max number is met, splitcode will no longer identify the tag with the given tag ID.
+
+
 

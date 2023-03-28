@@ -183,6 +183,16 @@ Why does the GUI produce empty output when I click run even though I know my ent
 The most common cause of this issue is that the input you entered is not in FASTQ format. Each sequence in your input must consist of four lines exactly in FASTQ format. This also means **your quality scores MUST be of the same length as the sequence**. When playing around with different sequences, make absolutely sure you adjust the length of the quality scores line as well.
 
 
+General questions
+-----------------
+
+
+Can splitcode discover what adapter sequences are within the data?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+No. While splitcode is designed to detect and trim sequences defined in the config file, splitcode cannot discover unspecified sequences. For this task, there are many other tools that can do so (see the splitcode paper which references many such tools).
+
+
 .. _Performance questions:
 
 Performance questions
