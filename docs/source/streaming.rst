@@ -112,6 +112,11 @@ Therefore, the above command is resolved as follows:
 * **UMI** is located at **2,0,8**: ``file #2, position 0, end position 8``; (aka first 8 bp of the possibly modified R2.fq file)
 * **sequence** to be mapped is **1,0,0**: ``file #1, position 0, end position 0``; (note that if end position is 0, that means go until the end of the line -- here, since start position is also 0, this basically means take the entire line of the possibly modified R1.fq file)
 
+.. tip::
+
+  kallisto's ``-x`` option can stitch multiple parts together by using comma separators. 
+  
+  For example, -x 0,0,16:**2,0,8,2,20,22,2,40,44**:1,0,0 means the UMI is in file #2 with the first 8-bps stitched to the 2-bps from position 20 to 22 and finally the 4-bps from position 40 to 44 (forming a 14-bp UMI sequence).
 
 
 splitcode to splitcode
