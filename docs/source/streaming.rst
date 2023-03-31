@@ -77,11 +77,11 @@ cutadapt version 4.3 and bwa version 0.7.17 (with a reference FASTA file named *
 
 Here, cutadapt reads in the two FASTQ files and interleaves the output (via ``--interleaved``), which splitcode takes in as paired-end input (via ``-`` and via ``--inleaved``) and then interleaves its output (via ``--pipe``), which is then fed into bwa (where the ``-p`` option allows interleaved paired reads to be inputted).
 
-If a program doesn't support reading in piped input, you can used named pipes via the unix command ``mkfifo``.
+If a program doesn't support reading in piped input, you can use named pipes via the unix command ``mkfifo``.
 
 .. tip::
 
-  splitcode can transfer the SAM tags put in the FASTQ header comments output to bwa by giving the ``-C`` option to bwa. This is useful for splitcode options like --x-names or --com-names which put information into SAM tags in the output FASTQ headers.
+  splitcode can transfer the SAM tags put in the FASTQ header comments output to bwa by giving the ``-C`` option to bwa. This is useful for splitcode options like ``--x-names`` or ``--com-names`` which put information into SAM tags in the output FASTQ headers.
 
 splitcode to kallisto
 ~~~~~~~~~~~~~~~~~~~~~
