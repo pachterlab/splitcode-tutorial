@@ -234,6 +234,8 @@ Now, let's view the output files below:
 
   There are four possibilities for identified tags in terms of *groups*: **grp_A** followed by **grp_B**, **grp_A** only, **grp_B** only, and no tags identified. This is thanks to the combination of the **maxFindsG**, **next**, and **locations** config options.
 
+.. _Example Pipe Output:
+
 Pipe Output
 ~~~~~~~~~~~
 
