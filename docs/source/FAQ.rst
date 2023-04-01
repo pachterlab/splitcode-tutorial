@@ -150,6 +150,7 @@ A second reason to use ``--assign`` is if you want only certain reads that meet 
 
    If you want to exclude a tag from being considered in forming the **final barcode**, then set the value ``1`` for that tag in the ``exclude`` column of the config file.
 
+.. _output final barcodes question:
 
 How do I specify the output of the final barcodes?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -142,6 +142,8 @@ Multiple extraction sequences
 
    ``@no-chain`` specified in the config file header can disable the "stitching" behavior such that only the first encounter of a name (e.g. xxx) is extracted.
 
+.. _Output extractions guide:
+
 Output options
 ~~~~~~~~~~~~~~
 

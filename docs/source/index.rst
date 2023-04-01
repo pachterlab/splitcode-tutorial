@@ -24,6 +24,7 @@ splitcode
 
    user_guide_tags
    user_guide_extraction
+   header_and_sam
    streaming
    reference_guide
    FAQ
