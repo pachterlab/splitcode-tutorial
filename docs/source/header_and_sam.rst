@@ -3,7 +3,7 @@
 Header and SAM tags
 ===================
 
-splitcode can put information about identified tags and extracted sequences into the **FASTQ header comments**. The header comments are oftentimes used by downstream programs such as bwa, especially in instances when the downstream program outputs a SAM/BAM file (`Li et al., Bioinformatics 2009 <https://doi.org/10.1093/bioinformatics/btp352>`_). Below, we list a few of the options to put information into the read header of the splitcode output (you can specify multiple of these options at once). Note that the modified read header will appear in all of splitcode's FASTQ output.
+splitcode can put information about identified tags and extracted sequences into the **FASTQ header comments**. The header comments are oftentimes used by downstream programs such as bwa, especially in instances when the downstream program outputs a SAM/BAM file (`Li, Handsaker, et al., Bioinformatics 2009 <https://doi.org/10.1093/bioinformatics/btp352>`_). Below, we list a few of the options to put information into the read header of the splitcode output (you can specify multiple of these options at once). Note that the modified read header will appear in all of splitcode's FASTQ output.
 
 --mod-names
 ^^^^^^^^^^^
@@ -57,8 +57,8 @@ Since ``30`` is the numerical version of the final barcode sequence ``AAAAAAAAAA
 
 Generally, you should always use ``--assign`` first and only use ``--sub-assign`` if, for some reason, you need to have another unique identifier generated for a different set of tags.
 
-Remultiplexing ID
-^^^^^^^^^^^^^^^^^
+remultiplex id
+^^^^^^^^^^^^^^
 
 The remultiplexing ID is stored in the SAM tag ``BC:Z:``. For more information about remultiplexing, please see the relevant section.
 
