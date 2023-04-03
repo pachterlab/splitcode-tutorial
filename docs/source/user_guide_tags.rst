@@ -49,4 +49,13 @@ Minimum Finds and Maximum Finds
 **maxFinds** column: You can enter the maximum number of times a tag can be found. Once this max number is met, splitcode will no longer identify the tag with the given tag ID.
 
 
+Substitutions
+^^^^^^^^^^^^^
+
+**subs** column: You can specify what you want to replace a tag sequence with upon identifying it in a read. The read in the output FASTQ will therefore be edited to contain the specified replacement.
+
+Standard replacements: You can simply replace a sequence with another sequence; for example, you can replace ``ATCG`` in a read with ``NNN`` by specifying NNN in the subs column for the tag with the ATCG sequence.
+
+Error-correction replacements:  If you put the value ``.`` in the column, then that means replacing the tag sequence with the original sequence. An example of what this means: if you have the sequence ``AAA`` (and allow for one substitution error by putting the value ``1`` into the **distances** column) and put ``.`` in the **subs** column, identifying ``ATA`` in a read will cause the ATA to be replaced with AAA in the output. This is especially useful for error correction (e.g. correcting to a list of barcodes).
+
 
