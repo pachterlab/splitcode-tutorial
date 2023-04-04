@@ -20,7 +20,7 @@ Now simply run splitcode with the ``--remultiplex`` option as follows:
 
  splitcode --remultiplex -o out_R1.fastq.gz,out_R2.fastq.gz --outb=barcodes.fastq.gz batch.txt
 
-The output files ``out_R1.fastq.gz`` and ``out_R2.fastq.gz`` will contain all the input FASTQ files from batch.txt concatenated together. The ``barcodes.fastq.gz`` file will contain unique barcodes corresponding to each cell, as specified in the batch.txt file. Note that cell1 appears twice in the batch.txt file; therefore both pairs of files (beginning with a_ and b_) will have their reads associated with the same barcode. The barcodes will be 16-bp in length and will look like ``AAAAAAAAAAAAAAAA`` (for ``cell1``), ``AAAAAAAAAAAAAAAC`` (for ``cell2``), and ``AAAAAAAAAAAAAAAG`` (for ``cell3``).
+The output files ``out_R1.fastq.gz`` and ``out_R2.fastq.gz`` will contain all the input FASTQ files from batch.txt concatenated together. The ``barcodes.fastq.gz`` file will contain unique barcodes corresponding to each cell, as specified in the batch.txt file. Note that cell1 appears twice in the batch.txt file; therefore both pairs of files (beginning with **a_** and **b_**) will have their reads associated with the same barcode. The barcodes will be 16-bp in length and will look like **AAAAAAAAAAAAAAAA** (for **cell1**), **AAAAAAAAAAAAAAAC** (for **cell2**), and **AAAAAAAAAAAAAAAG** (for **cell3**).
 
 There are multiple ways to output the barcodes that are made from remultiplexing:
 
