@@ -171,6 +171,7 @@ splitcode help menu which can be accessed via ``splitcode -h``
       --seq-names  Modify names of outputted sequences to include the sequences of identified tags
       --x-names    Modify names of outputted sequences to include extracted UMI-like sequences
       --x-only     Only output extracted UMI-like sequences
+      --bc-names   Modify names of outputted sequences to include final barcode sequence string
   -X, --sub-assign Assign reads to a secondary sequence ID based on a subset of tags present (must be used with --assign)
                    (e.g. 0,2 = Generate unique ID based the tags present by subsetting those tags to tag #0 and tag #2 only)
                    The names of the outputted sequences will be modified to include this secondary sequence ID

@@ -67,10 +67,10 @@ Since ``30`` is the numerical version of the final barcode sequence ``AAAAAAAAAA
 
 Generally, you should always use ``--assign`` first and only use ``--sub-assign`` if, for some reason, you need to have another unique identifier generated for a different set of tags.
 
-remultiplex id
-^^^^^^^^^^^^^^
+--bc-names
+^^^^^^^^^^
 
-The remultiplexing ID is stored in the SAM tag ``BC:Z:``. For more information about remultiplexing, please see the relevant section.
+--bc-names is similar to ``--com-names`` except the actual final barcode sequence (rather than the numerical ID) is used, and that sequence is placed after the ``BC:Z:`` SAM tag.
 
 --sam-tags
 ^^^^^^^^^^
