@@ -71,4 +71,18 @@ Next and Previous
    By default, the next and previous policy applies to each file *individually*. Say we have paired-end reads (e.g. ``--nFastqs=2``), if we're searching for a "next" tag in file #0 but don't find it, we won't continue with trying to find "next" tag in file #1; rather we'll begin anew (i.e. the "next" from file #0 doesn't apply to file #1).
 
 
+Left and Right Trimming
+^^^^^^^^^^^^^^^^^^^^^^^
 
+**left** column: Specify whether you want to trim from the left by entering ``1`` into this column (or ``0`` if you don't want to trim). The associated tag will be trimmed from the left such that, when the tag is identified, the tag sequence AND everything to the *left* of the tag will be trimmed off (i.e. only stuff to the right of the tag will remain). You can also specify how many extra bps you want to trim by entering a number after the ``1`` -- e.g. entering ``1:3`` means that we want to additionally remove the next 3 values to the *right* of the end of the tag and ``1:-3`` means that we want to remove the next 3 bps to the *left* of the end of the tag. For example, if we have ``CCAAAAATTTGGGGGCC`` and the tag we want to identify has the sequence ``TTT``, trimming from the left (i.e. ``1``) will result in ``GGGGGCC``, trimming with ``1:3`` will result in ``GGCC``, and trimming with ``1:-4`` will result in ``ATTTGGGGGCC`` (i.e. we consider the end of TTT and move left 4 bps, and trim everything to the left of that).
+
+**right** column: Same as the *left* column except we specify trimming from the right. In the case of the ``CCAAAAATTTGGGGGCC`` sequence, specifying ``1`` will result in ``CCAAAAA`` (i.e. removal of the tag and everything to the right of it), specifying ``1:3`` will result in ``CCAA`` (trim an additional 3 bps to the left of the tag), and specifying ``1:-4`` will result in ``CCAAAAATTTG`` (consider the beginning of the tag, move right 4 bps, and trim everything to the right of that).
+
+
+.. hint::
+   
+   * If we go over the bounds of the read, we simply trim up to the bounds of the read.
+   
+   * If multiple trimming possibilities are possible, only the final identified tag (with trimming enabled) will be considered for trimming in the case of **left** or only the first identified tag (with trimming enabled) will be considered for trimming in the case of **right**.
+   
+   * Both left and right trimming can be enabled for different tags, in which the same rults still apply. For example, specifying left trimming of **AAA** and right trimming of **TTT** for **CCAAAAATTTGGGGGCC**, we'll get **AA** (i.e. TTTGGGGGCC and CCAAA are both trimmed off).
