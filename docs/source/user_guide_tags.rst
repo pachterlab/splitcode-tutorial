@@ -85,4 +85,4 @@ Left and Right Trimming
    
    * If multiple trimming possibilities are possible, only the final identified tag (with trimming enabled) will be considered for trimming in the case of **left** or only the first identified tag (with trimming enabled) will be considered for trimming in the case of **right**.
    
-   * Both left and right trimming can be enabled for different tags, in which the same rults still apply. For example, specifying left trimming of **AAA** and right trimming of **TTT** for **CCAAAAATTTGGGGGCC**, we'll get **AA** (i.e. TTTGGGGGCC and CCAAA are both trimmed off).
+   * Both left and right trimming can be enabled for different tags, in which the same rules still apply. For example, specifying left trimming of **AAA** and right trimming of **TTT** for **CCAAAAATTTGGGGGCC**, we'll get **AA** (i.e. TTTGGGGGCC and CCAAA are both trimmed off).
