@@ -92,8 +92,8 @@ Homopolymer identification
 
 Homopolymers are repeats of a single nucleotide (e.g. GGGGGGGGGG is a 10 bp homopolymer). We can detect these with splitcode by specifying such sequences in the **tags** column. For example, to detect a homopolymer of G's at least 10 bps in length up through 100 bps in length, specify the tag sequence as ``G:10:100``. You can use the other columns (e.g. left, right, subs, etc.) to decide what to do with the detected homopolymer (trim it? replace it something else? etc.).
 
-Error distances
-^^^^^^^^^^^^^^^
+Error distances/tolerance
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 **distances** column: For tag sequences, you can specify the number of allowable mismatches. Setting ``1`` in the distances column means one substitution is permitted, setting ``2`` means two substitutions are permitted, etc. You can also specify the number of allowable indels and allowable total errors as **allowable_substitutions:allowable_indels:allowable_total_errors**. For example, ``1:1:1`` means one substitution is permitted, one indel is permitted, and a total of one substitution+indel is permitted (i.e. we can have one substitution OR one indel). 
 
