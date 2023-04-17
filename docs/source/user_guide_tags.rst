@@ -92,4 +92,32 @@ Homopolymer identification
 
 Homopolymers are repeats of a single nucleotide (e.g. GGGGGGGGGG is a 10 bp homopolymer). We can detect these with splitcode by specifying such sequences in the **tags** column. For example, to detect a homopolymer of G's at least 10 bps in length up through 100 bps in length, specify the tag sequence as ``G:10:100``. You can use the other columns (e.g. left, right, subs, etc.) to decide what to do with the detected homopolymer (trim it? replace it something else? etc.).
 
+Error distances
+^^^^^^^^^^^^^^^
+
+**distances** column: For tag sequences, you can specify the number of allowable mismatches. Setting ``1`` in the distances column means one substitution is permitted, setting ``2`` means two substitutions are permitted, etc. You can also specify the number of allowable indels and allowable total errors as **allowable_substitutions:allowable_indels:allowable_total_errors**. For example, ``1:1:1`` means one substitution is permitted, one indel is permitted, and a total of one substitution+indel is permitted (i.e. we can have one substitution OR one indel). 
+
+.. warning::
+   
+   * Do not set the number of allowable errors too high for long sequences otherwise splitcode cannot handle it in terms of memory/time. The purpose of splitcode is not to handle long sequences with more than a couple of errors. Having two or fewer total errors should be sufficient for most applications that splitcode is designed for. See the FAQ:
+
+   :ref:`Error tolerance performance question`
+
+   * Be careful when using indels, e.g. the matched sequence might include extra bps at the beginning since those might technically count as "insertions"  (since splitcode proceeds from the beginning to the end of a read to find matches).
+
+Truncated/partial sequences
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Let's say you expect the sequence ``GAGATGG`` at the beginning of the read. What if this sequence could be partially truncated such that the first couple of bps might be missing? We might instead see **AGATGG** or **GATGG** at the beginning of the read. To account for this, we use partial matching:
+
+**partial5** column: We match truncated sequences at the beginning (5′ end) of the read. In this column, specify the minimum overlap as well as the hamming distance mismatch frequency as **min_overlap:mismatch_frequency**. For example, ``5:0.18`` means a minimum overlap of 5 bps (for the sequence above, either **GAGATGG** **AGATGG** or **GATGG** at the very beginning of the read will match, because the overlap is 5+ bps). With the error frequency of 0.2, that means that the number of substitution errors allowed is 0.2 multipled by the length of the match. For a 7-bp overlap, 0.18 \times 7 = 1.26 = 1 substitution allowed. For a 6-bp overlap, 0.18 \times 6 = 1.08 = 1 substitution allowed. For a 5-bp overlap, 0.2 \times 5 = 0 = 0 substitution allowed. Thus, **CATGG** will not match but **ACATGG** will (in both cases, 1 substitution is present).
+
+**partial3** column: Same as *partial5* except sequences may be truncated at the end at the 3′ end of the read. Like *partial5*, the value entered in the column is supplied as **min_overlap:mismatch_frequency**.
+
+.. warning::
+   
+   * Do not set the substitution mismatch frequency too high for long sequences otherwise splitcode cannot handle it in terms of memory/time. For a 30-bp sequence, setting a frequency of 0.3 means that 9 substitutions are permitted if the full 30 bps are present at the beginning of the read. This is not what splitcode is designed for: splitcode is designed for identifying short sequences with small number of mismatches (≤3). Programs that implement dynamic programming algorithms like cutadapt can handle high error rates and may be more efficient and more suitable for purposes like adapter trimming depending on your use case. See the FAQ:
+   
+   :ref:`Error tolerance performance question`
+
 
