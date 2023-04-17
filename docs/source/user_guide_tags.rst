@@ -86,3 +86,10 @@ Left and Right Trimming
    * If multiple trimming possibilities are possible, only the final identified tag (with trimming enabled) will be considered for trimming in the case of **left** or only the first identified tag (with trimming enabled) will be considered for trimming in the case of **right**.
    
    * Both left and right trimming can be enabled for different tags, in which the same rules still apply. For example, specifying left trimming of **AAA** and right trimming of **TTT** for **CCAAAAATTTGGGGGCC**, we'll get **AA** (i.e. TTTGGGGGCC and CCAAA are both trimmed off).
+
+Homopolymer identification
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Homopolymers are repeats of a single nucleotide (e.g. GGGGGGGGGG is a 10 bp homopolymer). We can detect these with splitcode by specifying such sequences in the **tags** column. For example, to detect a homopolymer of G's at least 10 bps in length up through 100 bps in length, specify the tag sequence as ``G:10:100``. You can use the other columns (e.g. left, right, subs, etc.) to decide what to do with the detected homopolymer (trim it? replace it something else? etc.).
+
+
