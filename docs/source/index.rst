@@ -26,6 +26,7 @@ splitcode
    user_guide_extraction
    header_and_sam
    streaming
+   demultiplex_guide
    remultiplex_guide
    reference_guide
    FAQ
