@@ -18,8 +18,8 @@ We can create a file, let's name it ``select.txt`` containing the tag names as f
 .. code-block:: text
   :caption: select.txt
 
- tag_A
- tag_C
+  tag_A
+  tag_C
 
 We can then run splitcode as follows:
 
@@ -51,8 +51,8 @@ We can do so by creating a two-column **select.txt** that contains the following
 .. code-block:: text
   :caption: select.txt
 
- grp_1,grp_2 fileA
- grp_1,grp_3 fileB
+  grp_1,grp_2 fileA
+  grp_1,grp_3 fileB
 
 Now, let's say we have paired-end FASTQ files: ``R1.fastq`` and ``R2.fastq`` and we want to put all other reads (i.e. that don't meet the criteria above) into the files: ``unmapped_R1.fastq.gz`` and ``unmapped_R2.fastq.gz``.
 
@@ -66,7 +66,7 @@ The ``--gzip`` command means all our output files are compressed and ``--no-outp
 
 The following files will be produced:
 
-* ``fileA_0.fastq.gz`` and ``fileA_1.fastq.gz``: Where the fileA outputs (**grp_1,grp_2**) will be written to. Note that ``_0`` means the first file in the read group (i.e. the R1 file in this case), and the ``_1`` means the second file in the read group (i.e. the R2 file in this case). These suffixes (i.e. _0, _1, _2, _3, etc.) are used because **--nFastqs** might be some larger number and we'll need to keep track of the order of reads in the read group.
+* ``fileA_0.fastq.gz`` and ``fileA_1.fastq.gz``: Where the fileA outputs (**grp_1,grp_2**) will be written to. Note that **_0** means the first file in the read group (i.e. the R1 file in this case), and the **_1** means the second file in the read group (i.e. the R2 file in this case). These suffixes (i.e. _0, _1, _2, _3, etc.) are used because **--nFastqs** might be some larger number and we'll need to keep track of the order of reads in the read group.
 * ``fileB_0.fastq.gz`` and ``fileB_1.fastq.gz``: Where the fileB outputs (**grp_1,grp_3**) will be written to. Similar concept to the *fileA* outputs described above.
 * ``fileA_barcodes.fastq.gz`` and ``fileB_barcodes.fastq.gz``: These contain the final barcodes for the fileA files and the fileB files if **--assign** is specified (without **--assign**, these files will just be empty).
 * ``unmapped_R1.fastq.gz`` and ``unmapped_R2.fastq.gz``: These are the files where we specified that the unmapped reads (i.e. those that don't fall into anything in select.txt) will be written into.
