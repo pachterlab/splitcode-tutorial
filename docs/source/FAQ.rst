@@ -118,7 +118,12 @@ Furthermore, splitcode operates by scanning reads from beginning to end (i.e. fr
 
   It's always good to realize that splitcode scans sequences from beginning to end. If we have two sequences **AAGAT** and **ATTTT** for the FASTQ read above, it's impossible for the latter sequence to be identified. splitcode will identify AAGAT and then move on past those 5 bp's, but the remaining bp's are TTT so there's no way for ATTTT to be found.
   
-  
+
+Does trimming affect the locations we specify?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For ``@trim-5``, ``@trim-3``, or ``@qtrim-pre``, trimming is done *before* anything else. Therefore, for these options, the locations specified will be relative to the trimmed sequence. For example, if we trim four bases from the 5′ end via trim-5, the fifth base is now considered position 0. For all other trimming options, the positions will remain unchanged. Keep these things in mind when doing extractions, using the locations column, or using --loc-names.
+
    
 .. _Config file questions:
 
