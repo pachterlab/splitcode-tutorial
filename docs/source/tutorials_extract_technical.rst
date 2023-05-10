@@ -39,12 +39,12 @@ Here, we'll create the following ``config.txt`` file:
 
    @extract <barcode_A{{@grp_A}}>,<barcode_B{{@grp_B}}>,{{grp_B}}3<umi[8]>,{{grp_A}}<region_1>{{grp_B}},{{grp_B}}3<region_2>0:-1,1:0<cdna>1:-1
    @trim-3 0,4
-   groups	ids           tags    distances	  next		  maxFindsG	locations
-   grp_A	Barcode_A1	  AAGGA   1		        {{grp_B}} 1		      0:0:5
-   grp_A	Barcode_A2	  GTGTG   1		        {{grp_B}} 1		      0:0:5
-   grp_A	Barcode_A3	  CGTAT   1		        {{grp_B}} 1		      0:0:5
-   grp_B	Barcode_B1	  GCGCAA  0		        -		      1		      0:5:100
-   grp_B	Barcode_B2	  CCCGT   0           -		      1		      0:5:100
+   groups	ids             tags      distances	  next		  maxFindsG	locations
+   grp_A	Barcode_A1	    AAGGA     1		        {{grp_B}} 1		      0:0:5
+   grp_A	Barcode_A2	    GTGTG     1		        {{grp_B}} 1		      0:0:5
+   grp_A	Barcode_A3	    CGTAT     1		        {{grp_B}} 1		      0:0:5
+   grp_B	Barcode_B1	    GCGCAA    0		        -		      1		      0:5:100
+   grp_B	Barcode_B2	    CCCGT     0           -		      1		      0:5:100
 
 We can extract into separate files as follows:
 
