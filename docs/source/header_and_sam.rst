@@ -55,6 +55,15 @@ Since ``30`` is the numerical version of the final barcode sequence ``AAAAAAAAAA
    :ref:`Output extractions guide`
      More information about the output options for extracted sequences.
 
+--loc-names
+^^^^^^^^^^^
+
+--loc-names is an option where the tags that are found in a read are placed in the SAM tag: ``LX:Z:`` along with their locations. The format of a tag+location entry is **tag_name:file_number,start_pos-end_pos** for each tag found in the order they are found. Each tag+location entry is separated by a comma. Here's an example:
+
+.. code-block:: text
+
+  @readname LX:Z:tag_A:0,3-6,tag_B:0,6-10
+
 
 --sub-assign
 ^^^^^^^^^^^^
