@@ -30,6 +30,12 @@ splitcode
    reference_guide
    FAQ
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Tutorials:
+
+   tutorials_extract_technical
+
 
 
 **Citation:**
