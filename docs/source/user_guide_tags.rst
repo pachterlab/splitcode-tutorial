@@ -105,6 +105,11 @@ Error distances/tolerance
 
    * Be careful when using indels, e.g. the matched sequence might include extra bps at the beginning since those might technically count as "insertions"  (since splitcode proceeds from the beginning to the end of a read to find matches).
 
+Locations
+^^^^^^^^^
+
+**locations** column: You can specify the location where the tag must be found within. The structure of the locations is **file:start:end**. For example ``0:0:10`` means the tag must be contained within the first 10 bps of the read in the first file (**file** = 0; **start** = 0; **end** = 10). Set the **end** to be 0, if you want to extend to the end of the read; for example ``0:5:0`` means the tag can be found anywhere after the first 5 bps of the read in the first file. Additionally, you can set **start** to be a *negative number* to specify proceeding from the end of a read; for example, ``0:-40:0`` means the tag can be found only in the last 40 bps of a read in the first file. FInally, you can set the **file** to be -1 if you want the read to be found in any file.
+
 Truncated/partial sequences
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
