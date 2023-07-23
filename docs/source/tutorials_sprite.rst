@@ -33,17 +33,33 @@ Processing
 
 We will use the `SRR7216015 <https://www.ncbi.nlm.nih.gov/sra/?term=SRR7216015>`_ FASTQ files as an example. We run the following:
 
-.. code-block:: text
+.. code-block:: shell
 
-   splitcode --assign -o SRR7216015_o1.fastq.gz,SRR7216015_o2.fastq.gz -u SRR7216015_u1.fastq.gz,SRR7216015_u2.fastq.gz -O barcodeids.fq.gz -N 2 -c sprite_config.txt --keep-grp=<(echo "DPM,Y,ODD,EVEN,ODD") --mod-names --gzip -m mapping.txt SRR7216015_1.fastq.gz SRR7216015_2.fastq.gz
+   splitcode --assign -N 2 -o SRR7216015_o1.fastq.gz,SRR7216015_o2.fastq.gz \
+   --unassigned=SRR7216015_u1.fastq.gz,SRR7216015_u2.fastq.gz --outb=barcodeids.fq.gz \
+   -c sprite_config.txt --keep-grp=<(echo "DPM,Y,ODD,EVEN,ODD") --mod-names \
+   --gzip --mapping=mapping.txt SRR7216015_1.fastq.gz SRR7216015_2.fastq.gz
 
 Note that for ``--keep-grp``, we specified ``<(echo "DPM,Y,ODD,EVEN,ODD")``. We could have put **DPM,Y,ODD,EVEN,ODD** into a separate file and supplied that separate file name, but, for simplicity, we just used a process substitution to create an anonymous pipe.
+
+Output
+^^^^^^
 
 The output contains 6 files:
 
 * **SRR7216015_o1.fastq.gz** and **SRR7216015_o2.fastq.gz**: The assigned reads files, i.e. the R1 and R2 files with the six tags (DPM,Y,ODD,EVEN,ODD) identified in order.
-* **SRR7216015_u1.fastq.gz** and **SRR7216015_u2.fastq.gz**: The R1 and R2 files with that don't have the six tags identified (e.g. only a few tags or no tags were identified). Hint: You can omit the -u option if you don't care about these unassigned reads files.
+* **SRR7216015_u1.fastq.gz** and **SRR7216015_u2.fastq.gz**: The R1 and R2 files with that don't have the six tags identified (e.g. only a few tags or no tags were identified). Hint: You can omit the --unassigned option if you don't care about these unassigned reads files.
 * **barcodeids.fq.gz**: The final barcodes (e.g. each SPRITE clusters get a unique final barcode) that's associated with the assigned reads files. The tags associated with each barcode are outputted in **mapping.txt**.
+
+Because we used ``--mod-names``, the tag names will be outputted in the FASTQ header, e.g. as follows:
+
+.. code-block:: text
+
+   @SRR7216015.2::[DPM6A2][NYBot86_Stg][Odd2Bo12][Even2Bo90][Odd2Bo62]
+   TGACATGTTTGGCTCTCTGTTTGTCTGTTATTGGTGTAAAAGAATGCTTGTGATTTTTGCACATTGATTTTGTATCCTGAGACTTTGCTGAAGTTGCTTCTGGATGGATTAAATT
+   +
+   DDDDDIIIIIIIIIIIIIIIIIIIIIIHIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIHIIIFHHIIIIIIIIIII
+
 
 .. hint::
 
