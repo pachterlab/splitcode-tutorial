@@ -47,8 +47,8 @@ Output
 
 The output contains 6 files:
 
-* **SRR7216015_o1.fastq.gz** and **SRR7216015_o2.fastq.gz**: The assigned reads files, i.e. the R1 and R2 files with the six tags (DPM,Y,ODD,EVEN,ODD) identified in order.
-* **SRR7216015_u1.fastq.gz** and **SRR7216015_u2.fastq.gz**: The R1 and R2 files with that don't have the six tags identified (e.g. only a few tags or no tags were identified). Hint: You can omit the --unassigned option if you don't care about these unassigned reads files.
+* **SRR7216015_o1.fastq.gz** and **SRR7216015_o2.fastq.gz**: The assigned reads files, i.e. the R1 and R2 files with the five tags (DPM,Y,ODD,EVEN,ODD) identified in order.
+* **SRR7216015_u1.fastq.gz** and **SRR7216015_u2.fastq.gz**: The R1 and R2 files with that don't have the five tags identified (e.g. only a few tags or no tags were identified). Hint: You can omit the --unassigned option if you don't care about these unassigned reads files.
 * **barcodeids.fq.gz**: The final barcodes (e.g. each SPRITE clusters get a unique final barcode) that's associated with the assigned reads files. The tags associated with each barcode are outputted in **mapping.txt**.
 
 Because we used ``--mod-names``, the tag names will be outputted in the FASTQ header, e.g. as follows:
