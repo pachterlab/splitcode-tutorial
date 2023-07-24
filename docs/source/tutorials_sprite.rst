@@ -42,6 +42,11 @@ We will use the `SRR7216015 <https://www.ncbi.nlm.nih.gov/sra/?term=SRR7216015>`
 
 Note that for ``--keep-grp``, we specified ``<(echo "DPM,Y,ODD,EVEN,ODD")``. We could have put **DPM,Y,ODD,EVEN,ODD** into a separate file and supplied that separate file name, but, for simplicity, we just used a process substitution to create an anonymous pipe.
 
+.. hint::
+
+   You can add **left** and/or **right** columns to the sprite config file to trim tags (e.g. remove the DPMs). You can additionally apply quality trimming via the *qtrim* option, which will happen afterwards.
+
+
 Output
 ^^^^^^
 
