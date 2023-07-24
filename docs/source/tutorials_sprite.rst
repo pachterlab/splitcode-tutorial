@@ -66,6 +66,17 @@ Because we used ``--mod-names``, the tag names will be outputted in the FASTQ he
    Add ``--com-names`` option if you want a **numerical** identifier for the SPRITE clusters placed into the FASTQ header comments rather than (or in addition to) the "final barcodes".
 
 
+Ligation Efficiency
+^^^^^^^^^^^^^^^^^^^
+
+To assess ligation efficiency, use the script at `ligeff.sh <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/sprite/ligeff.sh>`_
+
+
+.. code-block:: shell
+
+   ./ligeff.sh SRR7216015_o1.fastq.gz SRR7216015_u1.fastq.gz
+
+
 References
 ^^^^^^^^^^
 
