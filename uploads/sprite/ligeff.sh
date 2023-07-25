@@ -12,7 +12,7 @@ assigned="$1"
 unassigned="$2"
 str="$3"
 
-if [[ ! -f "$assigned" ]]; then
+if [[ ! -e "$assigned" ]]; then
     echo "Error: First file does not exist: $assigned";
     exit 1;
 fi
@@ -56,7 +56,7 @@ final_tags="DPM_0,NYB_0,ODD_0,EVE_0,ODD_1"
 fi
 
 num_full=$(zcat -f -- ${assigned}|awk 'NR%4==0'|wc -l)
-num_barcodes_in_assigned_read=$(zcat -f -- ${assigned}|head -1|tr -cd '[' | wc -c)
+num_barcodes_in_assigned_read=$(echo ,${final_tags}|tr -cd ',' | wc -c)
 
 num_tags=$(echo ${final_tags}|awk -F"," '{print NF}')
 
