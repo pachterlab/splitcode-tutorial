@@ -7,6 +7,7 @@
 # Limitations: Cannot have a single tag-type present more than 3 times (e.g. no more than 3 odd barcodes)
 # Limitations: Tags must have unique prefixes (e.g. ODD and ODDA is not acceptable)
 # Default tags if third argument isn't provided: DPM,NYB,ODD,EVEN,ODD
+# Can also supply a tag as DPM/RPM (to treat both equally); note that you can only do this for one tag
 
 assigned="$1"
 unassigned="$2"
@@ -22,18 +23,26 @@ if [[ ! -e "$unassigned" ]]; then
     exit 1;
 fi
 
+subs="cat"
+
 if [ $str ]; then
 final_tags_=""
 min_num=999999
 for i in ${str//,/ }
 do
-if [ ${#i} -lt $min_num ]; then
+first=$(echo ${#i}|cut -d'/' -f1)
+if [ ${first} -lt $min_num ]; then
 min_num=${#i}
 fi
 done
 for i in ${str//,/ }
 do
     tag_name=$(echo ${i} | tr '[:lower:]' '[:upper:]')
+    if [[ "$tag_name" == *"/"* ]]; then
+        sub_1=$(echo ${tag_name}|cut -d'/' -f2)
+        sub_2=$(echo ${tag_name}|cut -d'/' -f1)
+        subs="sed 's/\[${sub_1}/\[${sub_2}/g'"
+    fi
     tag_name=$(echo ${tag_name}|cut -c 1-$min_num)
     tag_name_="${tag_name}_0"
     if [[ "$final_tags_" != "" && "$final_tags_" == *"$tag_name_"* ]]; then
@@ -49,7 +58,6 @@ do
     final_tags_="${final_tags_}${tag_name},"
 done
 final_tags=$(echo ${final_tags_}|rev | cut -c 2- | rev)
-
 else
 # Default
 final_tags="DPM_0,NYB_0,ODD_0,EVE_0,ODD_1"
@@ -60,7 +68,7 @@ num_barcodes_in_assigned_read=$(echo ,${final_tags}|tr -cd ',' | wc -c)
 
 num_tags=$(echo ${final_tags}|awk -F"," '{print NF}')
 
-bc_counts=$(zcat -f -- ${unassigned}|awk -F ':' 'NR % 4 == 1 { print $3} '| awk -v TAGS=${final_tags} -v nums=0 -v total_num_bcs=$num_barcodes_in_assigned_read '{ nums+=1; cpos=0; split(TAGS,arrayval,","); split($0,a,"["); split("", xx); nums_bc=0; for (i=1;i<=length(arrayval);i++) {inv[arrayval[i]] = i;} for (i=2;i<=length(a);i++) { x=toupper(substr(a[i],0,3));  if (xx[x"_0"] == 0 && cpos < inv[x"_0"]) { xx[x"_0"] = 1; cpos=inv[x"_0"]; } else { if (xx[x"_1"] == 0 && cpos < inv[x"_1"]) { xx[x"_1"] = 1; cpos=inv[x"_1"]; } else { xx[x"_2"] = 1; cpos=inv[x"_2"]; } } } for (tag in arrayval) { total[arrayval[tag]]+=xx[arrayval[tag]]; nums_bc+=xx[arrayval[tag]]; } nums_bc_total[nums_bc]+=1; if (nums_bc >= total_num_bcs) { total_num_bcs = nums_bc; } } END { printf nums" "; printf total_num_bcs+1; printf " | "; for (i=0; i<=total_num_bcs+1; i++) { printf (i)":"nums_bc_total[i]" " }; printf " | "; for (i=1; i<=length(arrayval); i++) { printf ","total[arrayval[i]]; }  printf "\n" }')
+bc_counts=$(zcat -f -- ${unassigned}|awk -F ':' 'NR % 4 == 1 { print $3} ' | bash -c "$subs" | awk -v TAGS=${final_tags} -v nums=0 -v total_num_bcs=$num_barcodes_in_assigned_read '{ nums+=1; cpos=0; split(TAGS,arrayval,","); split($0,a,"["); split("", xx); nums_bc=0; for (i=1;i<=length(arrayval);i++) {inv[arrayval[i]] = i;} for (i=2;i<=length(a);i++) { x=toupper(substr(a[i],0,3));  if (xx[x"_0"] == 0 && cpos < inv[x"_0"]) { xx[x"_0"] = 1; cpos=inv[x"_0"]; } else { if (xx[x"_1"] == 0 && cpos < inv[x"_1"]) { xx[x"_1"] = 1; cpos=inv[x"_1"]; } else { xx[x"_2"] = 1; cpos=inv[x"_2"]; } } } for (tag in arrayval) { total[arrayval[tag]]+=xx[arrayval[tag]]; nums_bc+=xx[arrayval[tag]]; } nums_bc_total[nums_bc]+=1; if (nums_bc >= total_num_bcs) { total_num_bcs = nums_bc; } } END { printf nums" "; printf total_num_bcs+1; printf " | "; for (i=0; i<=total_num_bcs+1; i++) { printf (i)":"nums_bc_total[i]" " }; printf " | "; for (i=1; i<=length(arrayval); i++) { printf ","total[arrayval[i]]; }  printf "\n" }')
 
 num_barcodes_unassigned=$(echo $bc_counts |cut -d' ' -f1)
 num_positions=$(echo $bc_counts |cut -d' ' -f2)
@@ -111,3 +119,4 @@ fi
 
 echo "$count ($pct%) barcodes found in position $i."
 done
+
