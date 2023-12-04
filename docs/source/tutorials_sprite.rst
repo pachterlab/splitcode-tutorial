@@ -69,6 +69,9 @@ Because we used ``--mod-names``, the tag names will be outputted in the FASTQ he
 .. hint::
 
    Add ``--com-names`` option if you want a **numerical** identifier for the SPRITE clusters placed into the FASTQ header comments rather than (or in addition to) the "final barcodes".
+   
+   If you don't care about "final barcodes", You can omit --outb and --mapping; this will make things faster and more memory efficient.
+
 
 
 Ligation Efficiency
@@ -80,6 +83,13 @@ To assess ligation efficiency, use the script at `ligeff.sh <https://raw.githubu
 .. code-block:: shell
 
    ./ligeff.sh SRR7216015_o1.fastq.gz SRR7216015_u1.fastq.gz
+
+
+
+RD-SPRITE
+^^^^^^^^^
+
+Processing RD-SPRITE (RNA-DNA SPRITE) is also possible; see `rdsprite_config.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/sprite/rdsprite_config.txt>`_ for an example.
 
 
 References
