@@ -1,3 +1,5 @@
+.. _demultiplexing page:
+
 Demultiplexing
 ==============
 

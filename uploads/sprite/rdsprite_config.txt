@@ -5,7 +5,7 @@
 # Note: In the run above, only the R1 biological read is outputted (thanks to --select=0 which selects the first file, zero-indexed) and --assigned is omitted (so we don't get assigned barcodes that can be mapped to a specific set of tags; we only can visualize the tags in the read header [see below]). We could output the R2 reads and/or obtain assigned barcodes if we wanted to though; this is just for illustration purposes.
 # Example read header containing a set of tags: @SRR11892191.2::[NYBot53_Stg][Odd2Bo15][Even2Bo71][Odd2Bo5][RPM]
 
-groups	ids	barcodes	distances	locations	maxFindsG	next	left
+groups	ids	tags	distances	locations	maxFindsG	next	left
 EVEN	Even2Bo1	ATACTGCGGCTGACG	2	1:30	1	{{ODD2}}6-12	-
 EVEN	Even2Bo5	CTAGGTGGCGGTCTG	2	1:30	1	{{ODD2}}6-12	-
 EVEN	Even2Bo2	GTGACATTAAGGTTG	2	1:30	1	{{ODD2}}6-12	-

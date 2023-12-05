@@ -36,6 +36,7 @@ splitcode
    :caption: Tutorials:
 
    tutorials_extract_technical
+   tutorials_demultiplex_cells
    tutorials_sprite
 
 
