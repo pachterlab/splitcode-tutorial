@@ -37,6 +37,7 @@ splitcode
 
    tutorials_extract_technical
    tutorials_demultiplex_cells
+   tutorials_smartseq3
    tutorials_sprite
 
 
