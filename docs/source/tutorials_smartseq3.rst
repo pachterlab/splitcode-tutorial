@@ -9,10 +9,11 @@ Introduction
 Smart-seq3 is a technology that produces both strand-specific 5′ UMI-containing reads and internal reads (the internal reads are unstranded and provide coverage over the full length of the transcript). It is often desirable to separate these two types of reads.
 
 Smart-seq3 data (as originally published) has four files:
-* I1.fastq.gz: The first component of the cell barcode
-* I2.fastq.gz: The second component of the cell barcode
-* R1.fastq.gz: The first read, which, if internal, is purely biological; and if, UMI, will have an 11-bp tag sequence (ATTGCGCAATG) followed by an 8-bp UMI followed by a 3-bp GGG.
-* R2.fastq.gz: The second read (an entirely biological read); for single-end reads protocols, this file will not exist.
+
+* ``I1.fastq.gz``: The first component of the cell barcode
+* ``I2.fastq.gz``: The second component of the cell barcode
+* ``R1.fastq.gz``: The first read, which, if internal, is purely biological; and if, UMI, will have an 11-bp tag sequence (**ATTGCGCAATG**) followed by an 8-bp UMI followed by a 3-bp GGG.
+* ``R2.fastq.gz``: The second read (an entirely biological read); for single-end reads protocols, this file will not exist.
 
 Separating UMI reads from internal reads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -39,7 +40,9 @@ Then, run the following:
 
 The UMI reads and the internal (int) reads will now be separated. The R1_umi.fastq.gz will have the 11-bp tag trimmed off from the left end.
 
-If we have single-end reads (i.e. the R2.fastq.gz file does not exist), then we can simply omit the R2 files from the above command and set ``--nFastqs=3``.
+.. tip::
+
+   If you have single-end reads (i.e. the R2.fastq.gz file does not exist), then you can simply omit the R2 files from the above command and set ``--nFastqs=3``.
 
 
 
