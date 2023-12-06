@@ -93,10 +93,27 @@ Where ``_0.fastq.gz`` corresponds to ``R1`` and ``_1.fastq.gz`` corresponds to `
    * :ref:`DemuxCells guide` 
 
 
-Example: Long-read SPLiT-seq
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Example: Extracting barcodes based on linkers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-TODO
+In certain cases (e.g. long-read SPLiT-seq), the barcodes (and UMI) may not be in fixed position within a read and we'll need to extract them relative to the linker sequences. Let's further assume that we have single-end reads (input.fastq.gz) where the biological read occurs after the final 8-bp barcode (the round 1 barcode). Following the "Barcode reformatting" example above, we can do the following:
+
+
+.. code-block:: text
+  :caption: config.txt
+
+   @extract <umi[10]>8{linker1},<bc[8]>{linker1},{linker1}<bc[8]>{linker2},{linker2}<bc[8]>,{linker2}8<read>0:-1
+   tags                            ids      distances  minFinds  maxFinds  locations  next
+   GTGGCCGATGTTTCGCATCGGCGTACGACT  linker1  2          1         1         0:18       {linker2}8-8
+   ATCCACGTGCTTGAGACTGTGG*          linker2  2          1         1         0:-30      -
+
+.. code-block:: shell
+
+   splitcode -c config.txt --x-only --gzip input.fastq.gz
+
+We'll get a ``umi.fastq.gz`` file, a ``bc.fastq.gz`` (with the 3 barcodes stitched together), and a ``read.fastq.gz`` (containing the biological read sequence).
+
+Here, we set the hamming distance tolerance to 2, we terminate looking after the second linker, and we enforce extraction of barcodes of exactly 8-bp in length, but for applications such as long-read sequencing, one may want to adjust some of these to more sensitively pull out potential barcodes (that can further be refined downstream) to account for higher error rates.
 
 References
 ^^^^^^^^^^
