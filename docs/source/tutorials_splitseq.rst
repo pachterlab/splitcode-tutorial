@@ -50,7 +50,7 @@ With `r1_R.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/
    r2_r3.txt$   1          r2      round2_3  2          1,48,56
    r2_r3.txt$   1          r3      round2_3  2          1,10,18
 
-Note that the ``$`` means to treat each barcode sequence as its own individual tag and we use ``minFindsG`` to specify that the round 1 barcodes must be found once and the round 2+3 barcodes msut be found twice. We then run the following:
+Note that the ``$`` means to treat each barcode sequence as its own individual tag and we use ``minFindsG`` to specify that the round 1 barcodes must be found once and the round 2+3 barcodes must be found twice. We then run the following:
 
 .. code-block:: shell
 
@@ -88,7 +88,7 @@ Where ``_0.fastq.gz`` corresponds to ``R1`` and ``_1.fastq.gz`` corresponds to `
    See the following pages for further assistance on demultiplexing:
 
    * :ref:`demultiplexing page`
-   * :ref:`_DemuxCells guide` 
+   * :ref:`DemuxCells guide` 
 
 
 Example: Long-read SPLiT-seq
