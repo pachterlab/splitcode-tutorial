@@ -36,10 +36,28 @@ We then run splitcode on the R2.fastq.gz file as follows:
 Example: Barcode reformatting
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Here, we'll address producing a final "corrected" barcode with all three barcoding rounds stitched together.
+Here, we'll address producing a final "corrected" barcode with all three barcoding rounds stitched together and error-corrected (with the reads which don't have all three rounds matching the barcode onlist being discarded).
 
-TODO
+With `r1_R.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/splitseq/r1_R.txt>`_ and `r1_T.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/splitseq/r1_T.txt>`_ containing the round 1 barcodes (for R and T, respectively), and `r2_3.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/splitseq/r2_r3.txt>`_ containing the round 2 and 3 barcodes (note that round 2 and round 3 use the same set of 96 barcodes), we specify the following config.txt file:
 
+.. code-block:: text
+  :caption: config.txt
+
+   @extract <output_R2{*}>
+   tags         distances  ids     groups    minFindsG	locations
+   r1_R.txt$    1          r1_R    round1    1          1,78,86
+   r1_T.txt$    1          r1_T    round1    1          1,78,86
+   r2_r3.txt$   1          r2      round2_3  2          1,48,56
+   r2_r3.txt$   1          r3      round2_3  2          1,10,18
+
+Note that the ``$`` means to treat each barcode sequence as its own individual tag and we use ``minFindsG`` to specify that the round 1 barcodes must be found once and the round 2+3 barcodes msut be found twice. We then run the following:
+
+.. code-block:: shell
+
+   splitcode -c config.txt --nFastqs=2 --select=0 \
+   --gzip -o output_R1.fastq.gz R1.fastq.gz R2.fastq.gz
+
+The ``--select=0`` option means that we're only outputting the zeroth (i.e. R1) file which is named ``output_R1.fastq.gz`` -- we don't want to output the R2 file because we're already outputting the corrected, stitched-together barcodes (24-bp in length), which will be stored in ``output_R2.fastq.gz``.
 
 
 Example: Demultiplexing wells
@@ -66,6 +84,11 @@ The output will consist of a pair of files for each experiment:
 
 Where ``_0.fastq.gz`` corresponds to ``R1`` and ``_1.fastq.gz`` corresponds to ``R2`` (because splitcode uses zero-indexing).
 
+.. seealso::
+   See the following pages for further assistance on demultiplexing:
+
+   * :ref:`demultiplexing page`
+   * :ref:`_DemuxCells guide` 
 
 
 Example: Long-read SPLiT-seq
