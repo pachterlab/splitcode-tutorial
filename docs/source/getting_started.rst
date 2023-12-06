@@ -22,7 +22,7 @@ To use splitcode's GUI, please visit `https://pachterlab.github.io/splitcode/ <h
 
 .. note::
 
-   This GUI is under development and is a work in progress.
+   This GUI simply serves as a sandbox to try out and test certain features.
 
 
 
