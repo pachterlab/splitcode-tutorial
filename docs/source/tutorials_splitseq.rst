@@ -8,10 +8,12 @@ Introduction
 
 SPLiT-seq (Parse Biosciences) utilizes three rounds of combinatorial barcoding. A protocol might look as follows (and is what will be used in this tutorial):
 
-* Round 1 barcode (8 bps): Position 78-86 in R2.fastq.gz
-* Round 2 barcode (8 bps): Position 48-56 in R2.fastq.gz
-* Round 3 barcode (8 bps): Position 10-18 in R2.fastq.gz
+* **Round 1** barcode (8 bps): Position **78-86** in R2.fastq.gz
+* **Round 2** barcode (8 bps): Position **48-56** in R2.fastq.gz
+* **Round 3** barcode (8 bps): Position **10-18** in R2.fastq.gz
 * Biological read: The R1.fastq.gz file.
+
+The round 1 barcode and round 2 barcode are separated by a ATCCACGTGCTTGAGACTGTGG linker and the round 2 barcode and the round 3 barcode are separated by a GTGGCCGATGTTTCGCATCGGCGTACGACT linker. The first 10 bp's in R2.fastq.gz is the UMI.
 
 Note: The round 1 barcode (position 78-86 in R2.fastq.gz) has two types of reads: 1) random oligo primed reads (**R**), and 2) polyT primed reads (**T**). These are distinguished by the round 1 barcodes (there are 96 R barcodes and 96 T barcodes. Therefore, two possible barcodes can belong to a single cell. It would be desirable to analyze them separately (because of technical biases). However, one may alternatively want to convert R barcodes to their corresponding T barcodes (as is done in many pipelines) so that each cell gets a single barcode; this is what we'll do in the following section.
 
@@ -43,7 +45,7 @@ With `r1_R.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/
 .. code-block:: text
   :caption: config.txt
 
-   @extract <output_R2{*}>
+   @extract <output_R2{*}>,1:0<umi[10]>
    tags         distances  ids     groups    minFindsG	locations
    r1_R.txt$    1          r1_R    round1    1          1,78,86
    r1_T.txt$    1          r1_T    round1    1          1,78,86
@@ -57,7 +59,7 @@ Note that the ``$`` means to treat each barcode sequence as its own individual t
    splitcode -c config.txt --nFastqs=2 --select=0 \
    --gzip -o output_R1.fastq.gz R1.fastq.gz R2.fastq.gz
 
-The ``--select=0`` option means that we're only outputting the zeroth (i.e. R1) file which is named ``output_R1.fastq.gz`` -- we don't want to output the R2 file because we're already outputting the corrected, stitched-together barcodes (24-bp in length), which will be stored in ``output_R2.fastq.gz``.
+The ``--select=0`` option means that we're only outputting the zeroth (i.e. R1) file which is named ``output_R1.fastq.gz`` -- we don't want to output the R2 file because we're already outputting the corrected, stitched-together barcodes (24-bp in length), which will be stored in ``output_R2.fastq.gz``; the UMI will be stored in ``umi.fastq.gz``.
 
 
 Example: Demultiplexing wells
