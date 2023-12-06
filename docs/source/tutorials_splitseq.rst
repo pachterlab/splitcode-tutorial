@@ -32,6 +32,31 @@ We then run splitcode on the R2.fastq.gz file as follows:
    Instead of generating an output file via ``-o``, one can use ``-p`` instead to pipe output to standard output (and then direct the standard output directly into a downstream read processing/alignment program).
 
 
+Demultiplexing wells
+^^^^^^^^^^^^^^^^^^^^
+
+The 96-well plate contains 8 rows (A-H) and 12 columns (1-12). Each well can be identified by the first round of split-pool barcoding. For example purposes, let's say wells A1-A8 were used for one experiment, wells B1-B8 were used for a second experiment, wells C1-C8 were used for a third experiment, and wells D1-D8 were used for a fourth experiment. We want to separate those 4 experiments into their own FASTQ files.
+
+We can so by creating a config file, `config_separate.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/splitseq/config_separate.txt>`_, four files containing the barcodes for each experiment: `A1_A8.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/splitseq/A1_A8.txt>`_, `B1_B8.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/splitseq/B1_B8.txt>`_, `C1_C8.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/splitseq/C1_C8.txt>`_, `D1_D8.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/splitseq/D1_D8.txt>`_, and then a `select_wells.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/splitseq/select_wells.txt>`_ file specifying the demultiplexing strategy (i.e. barcodes go into certain files based on their experiment/group). We then run the following:
+
+
+.. code-block:: shell
+
+   splitcode -c config_separate.txt --nFastqs=2 \
+   --gzip --keep-grp=select_wells.txt \
+   --no-output --no-outb \
+   R1.fastq.gz R2.fastq.gz
+
+The output will consist of a pair of files for each experiment:
+
+* ``A1_A8_0.fastq.gz`` and ``A1_A8_1.fastq.gz``
+* ``B1_B8_0.fastq.gz`` and ``B1_B8_1.fastq.gz``
+* ``C1_C8_0.fastq.gz`` and ``C1_C8_1.fastq.gz``
+* ``D1_D8_0.fastq.gz`` and ``D1_D8_1.fastq.gz``
+
+Where ``_0.fastq.gz`` corresponds to ``R1`` and ``_1.fastq.gz`` corresponds to ``R2`` (because splitcode uses zero-indexing).
+
+
 References
 ^^^^^^^^^^
 

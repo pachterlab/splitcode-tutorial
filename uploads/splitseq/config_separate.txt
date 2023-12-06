@@ -1,0 +1,13 @@
+# splitcode config file for demultiplexing barcodes into wells
+# A hamming distance error of 1 is permitted
+# For R1:
+## If there is a hamming distance collision (e.g. CATTCCTA vs. CATTCCAT), the read is considered unassigned
+### (Putting $ after the barcode filenames AND giving each filename a different ID ensures that every single barcode gets a unique ID)
+### (Each barcode having a unique ID allows the "hamming distance collision = unassigned" to happen since multiple IDs being mapped is not allowed)
+### (Note: Barcodes are complex enough so that each barcode is at least two hamming distances away from other barcodes [i.e. cases like CATTCCTA vs. CATTCCTT won't happen]; but there are some collisions).
+
+tags	distances	ids	groups	locations
+A1_A8.txt$	1	exp1	A1_A8	1,78,86
+B1_B8.txt$	1	exp2	B1_B8	1,78,86
+C1_C8.txt$	1	exp3	C1_C8	1,78,86
+D1_D8.txt$	1	exp4	D1_D8	1,78,86
