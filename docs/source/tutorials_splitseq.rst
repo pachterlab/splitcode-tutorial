@@ -13,11 +13,11 @@ SPLiT-seq (Parse Biosciences) utilizes three rounds of combinatorial barcoding. 
 * Round 3 barcode (8 bps): Position 10-18 in R2.fastq.gz
 * Biological read: The R1.fastq.gz file.
 
-Note: The round 1 barcode (position 78-86 in R2.fastq.gz) has two types of reads: 1) random oligo primed reads (R), and 2) polyT primed reads (T). These are distinguished by the round 1 barcodes (there are 96 R barcodes and 96 T barcodes. Therefore, two possible barcodes can belong to a single cell. It would be desirable to analyze them separately (because of technical biases). However, one may alternatively want to convert R barcodes to their corresponding T barcodes (as is done in many pipelines) so that each cell gets a single barcode; this is what we'll do in the following section.
+Note: The round 1 barcode (position 78-86 in R2.fastq.gz) has two types of reads: 1) random oligo primed reads (**R**), and 2) polyT primed reads (**T**). These are distinguished by the round 1 barcodes (there are 96 R barcodes and 96 T barcodes. Therefore, two possible barcodes can belong to a single cell. It would be desirable to analyze them separately (because of technical biases). However, one may alternatively want to convert R barcodes to their corresponding T barcodes (as is done in many pipelines) so that each cell gets a single barcode; this is what we'll do in the following section.
 
 
-Convert R to T
-^^^^^^^^^^^^^^
+Example: Convert R to T
+^^^^^^^^^^^^^^^^^^^^^^^
 
 We create a config file, `config_RT.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/splitseq/config_RT.txt>`_, where each R barcode is specified to be replaced with its corresponding T barcode.
 
@@ -32,8 +32,18 @@ We then run splitcode on the R2.fastq.gz file as follows:
    Instead of generating an output file via ``-o``, one can use ``-p`` instead to pipe output to standard output (and then direct the standard output directly into a downstream read processing/alignment program).
 
 
-Demultiplexing wells
-^^^^^^^^^^^^^^^^^^^^
+
+Example: Barcode reformatting
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Here, we'll address producing a final "corrected" barcode with all three barcoding rounds stitched together.
+
+TODO
+
+
+
+Example: Demultiplexing wells
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The 96-well plate contains 8 rows (A-H) and 12 columns (1-12). Each well can be identified by the first round of split-pool barcoding. For example purposes, let's say wells A1-A8 were used for one experiment, wells B1-B8 were used for a second experiment, wells C1-C8 were used for a third experiment, and wells D1-D8 were used for a fourth experiment. We want to separate those 4 experiments into their own FASTQ files.
 
@@ -56,6 +66,12 @@ The output will consist of a pair of files for each experiment:
 
 Where ``_0.fastq.gz`` corresponds to ``R1`` and ``_1.fastq.gz`` corresponds to ``R2`` (because splitcode uses zero-indexing).
 
+
+
+Example: Long-read SPLiT-seq
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+TODO
 
 References
 ^^^^^^^^^^
