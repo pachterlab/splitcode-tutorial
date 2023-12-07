@@ -25,7 +25,7 @@ We provide the final assigned barcodes file (``barcodes.fastq.gz``) and a reads 
 
 We run the following, specifying a large k-mer size of 31 to avoid the barcodes file (16-bp barcodes) from being accounted for in the deduplication. Furthermore, we specify an error tolerance of two substitutions when deduplicating.
 
-.. code-block:: shell
+.. code-block:: text
 
    clumpify.sh k=31 dedupe=t subs=2 \
    in=barcodes.fastq.gz in2=reads.fastq.gz \
