@@ -8,7 +8,7 @@ Introduction
 
 splitcode assigns a "final" barcode to reads when ``--assign`` is used, which can be outputted into its own FASTQ file that is paired with the reads. In this section, we will use the final barcodes to deduplicate sequencing reads (e.g. to account for PCR bias) such that only duplicates *within each final barcode* are collapsed. This is useful in single-cell data where one may want to deduplicate sequences on a per-cell basis but the technology lacks UMIs.
 
-To accomplish deduplication, we will make use of the excellent `BBTools <https://jgi.doe.gov/data-and-tools/software-tools/bbtools/>`_ suite of software (Bushnell B., `sourceforge.net/projects/bbmap/ <sourceforge.net/projects/bbmap/>`_; Bushnell B, Rood J, Singer E. BBMerge–accurate paired shotgun read merging via overlap. PloS one. 2017 Oct 26;12(10):e0185056. `https://doi.org/10.1371/journal.pone.0185056 <https://doi.org/10.1371/journal.pone.0185056>`_). Specifically, we will use ``clumpify.sh`` from that suite of software.
+To accomplish deduplication, we will make use of the excellent `BBTools <https://jgi.doe.gov/data-and-tools/software-tools/bbtools/>`_ suite of software (Bushnell B., `sourceforge.net/projects/bbmap/ <https://sourceforge.net/projects/bbmap>`_; Bushnell B, Rood J, Singer E. BBMerge–accurate paired shotgun read merging via overlap. PloS one. 2017 Oct 26;12(10):e0185056. `https://doi.org/10.1371/journal.pone.0185056 <https://doi.org/10.1371/journal.pone.0185056>`_). Specifically, we will use ``clumpify.sh`` from that suite of software.
 
 One can download BBTools from the sourceforge link above. This guide makes use of **version 39.06** of the software:
 
