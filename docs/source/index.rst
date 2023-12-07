@@ -33,7 +33,7 @@ splitcode
 
    tutorials_extract_technical
    tutorials_demultiplex_cells
-   tutorial_deduplicate
+   tutorials_deduplicate
    tutorials_smartseq3
    tutorials_splitseq
    tutorials_sprite
