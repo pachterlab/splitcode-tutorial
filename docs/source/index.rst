@@ -1,7 +1,7 @@
 splitcode
 =========
 
-`splitcode <https://github.com/pachterlab/splitcode>`_ is a tool for flexible, efficient parsing and preprocessing of technical sequences in sequencing reads.
+`splitcode <https://github.com/pachterlab/splitcode>`_ is a tool for flexible, efficient parsing, interpreting, and editing of technical sequences in sequencing reads.
    
 .. image:: https://raw.githubusercontent.com/pachterlab/splitcode/main/figures/splitcode_figure.png
   :width: 725
