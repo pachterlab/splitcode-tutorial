@@ -190,6 +190,7 @@ splitcode help menu which can be accessed via ``splitcode -h``
   -s, --summary    File where summary statistics will be written to
   -h, --help       Displays usage information
       --assign     Assign reads to a final barcode sequence identifier based on tags present
+      --bclen      The length of the final barcode sequence identifier (default: 16)
       --inleaved   Specifies that input is an interleaved FASTQ file
       --remultiplex  Turn on remultiplexing mode
       --version    Prints version number

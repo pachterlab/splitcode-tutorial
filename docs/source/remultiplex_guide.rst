@@ -29,3 +29,4 @@ There are multiple ways to output the barcodes that are made from remultiplexing
 * You can supply the ``--com-names`` option to put the unique numerical ID after the ``BI:i:`` SAM tag in the read header.
 * You can supply the ``--pipe`` option so that the barcode is interleaved with the reads.
 * You can omit the ``--outb`` option which will cause, by default, the barcode to appear at the very beginning of each read in the first (R1) read file.
+* You can use the ``--bclen`` option to change the barcodes to be of lengths other than 16-bp.
