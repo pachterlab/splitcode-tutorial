@@ -6,7 +6,7 @@ project = 'splitcode'
 copyright = '2023, Delaney K. Sullivan, Lior Pachter'
 author = 'Delaney K. Sullivan, Lior Pachter'
 
-release = '0.29.1'
+release = '0.29.2'
 master_doc = 'index'
 
 # -- General configuration
