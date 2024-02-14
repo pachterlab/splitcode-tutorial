@@ -15,6 +15,13 @@ To use splitcode, first install it from source:
   make
   make install
 
+Alternately, one can download the binaries for Mac and Linux here: https://github.com/pachterlab/splitcode/releases
+
+.. note::
+
+   ``make install`` will not work unless you have permission to access the systems folders. In this case, after running the ``make`` step in the build directory, one can simply find the splitcode binary at src/splitcode and use that directly.
+
+
 
 Graphical User Interface (GUI)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
