@@ -19,7 +19,7 @@ Alternately, one can download the binaries for Mac and Linux here: https://githu
 
 .. note::
 
-   ``make install`` will not work unless you have permission to access the systems folders. In this case, after running the ``make`` step in the build directory, one can simply find the splitcode binary at src/splitcode and use that directly.
+   ``make install`` will not work unless you have permission to access the systems folders. In this case, after running the ``make`` step in the build directory, one can simply find the splitcode binary at **src/splitcode** and use that directly.
 
 
 
