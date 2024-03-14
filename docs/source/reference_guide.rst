@@ -8,7 +8,7 @@ Config file options
 Table Options
 ~~~~~~~~~~~~~
 
-These options are supplied as a tab-delimited table in the config file, with each option being a column. These options are used for tag sequence identification.
+These options are supplied as a tab-delimited table in the config file, with each option being a column. These options are used for tag sequence identification. (Note: the tags, ids, groups, distances, locations, and subs option can be specified either singular or plural, i.e. you can write *tag* instead of *tags*)
 
 .. list-table:: 
    :widths: 15 35 35 15 

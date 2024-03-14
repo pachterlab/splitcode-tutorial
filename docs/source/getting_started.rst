@@ -78,7 +78,7 @@ First, create a config file named ``config.txt`` with the following contents:
 
 ::
 
- ids tags subs
+ id  tag  sub
  id1 ATCG TTTT
 
 Next, let's create a sample FASTQ file called ``intro.fastq`` with the following contents:
