@@ -38,6 +38,13 @@ splitcode
    tutorials_splitseq
    tutorials_sprite
 
+.. toctree::
+   :maxdepth: 1
+   :caption: Additional Features:
+
+   features_bam
+   features_unmask
+
 
 
 **Citation:**
