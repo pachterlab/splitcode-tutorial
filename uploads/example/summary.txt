@@ -1,6 +1,6 @@
 {
-	"splitcode_version": "0.28.0",
-	"call": "splitcode -c config.txt --nFastqs=2 --assign -o output_R1.fastq,output_R2.fastq --unassigned=unassigned_R1.fastq,unassigned_R2.fastq --outb=final_barcodes.fastq --mapping=mapping.txt --summary=summary.txt R1.fastq R2.fastq",
+	"splitcode_version": "0.30.0",
+	"call": "splitcode -c config.txt --nFastqs=2 --summary=summary.txt --assign --pipe --mapping=mapping.txt R1.fastq R2.fastq",
 	"barcode_prefix": "",
 	"n_fastqs": 2,
 	"n_processed": 4,
@@ -60,5 +60,10 @@
 		"assign_id_map_size": 2,
 		"sub_assign_id_map_size": 0,
 		"always_assign": 0
-	}
+	},
+	"tag_qc": [
+		{"tag": "Barcode_A1", "distance": 0, "count": 1},
+		{"tag": "Barcode_A2", "distance": 0, "count": 1},
+		{"tag": "Barcode_B2", "distance": 0, "count": 2}
+	]
 }
