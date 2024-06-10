@@ -7,7 +7,7 @@ To use splitcode, you can install it via conda:
 
 .. code-block:: shell
 
-  conda install -c bioconda bowtie
+  conda install -c bioconda splitcode
 
 
 Or, to install it from source:
