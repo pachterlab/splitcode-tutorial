@@ -74,4 +74,22 @@ The following files will be produced:
 * ``unmapped_R1.fastq.gz`` and ``unmapped_R2.fastq.gz``: These are the files where we specified that the unmapped reads (i.e. those that don't fall into anything in select.txt) will be written into.
 
 
+.. tip::
+
+   The ``--keep-r1-r2`` command line option will allow the file names to be outputted as _R1.fastq.gz and _R2.fastq.gz rather than being based on zero-indexed file numbers. With this option enabled, ``fileA_R1.fastq.gz`` and ``fileA_R2.fastq.gz`` will be the names of the file outputted from the procedure above.
+
+
+Demultiplexing options within config file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   ``@keep:``, ``@keep-grp:``, ``@remove:``, ``@remove-grp:`` can be supplied directly in the config file, rather than using an external file supplied to the command line. For example, one could do the following:
+
+.. code-block:: text
+
+  @keep-grp:
+  grp_1,grp_2 fileA
+  grp_1,grp_3 fileB
+
+
+The text directly under ``@keep-grp`` in that example would be processed until a new empty line is reached. So, use an empty line as a divider between that option and the rest of config file.
 
