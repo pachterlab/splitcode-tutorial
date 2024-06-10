@@ -143,6 +143,10 @@ Multiple extraction sequences
    ``@no-chain`` specified in the config file header can disable the "stitching" behavior such that only the first encounter of a name (e.g. xxx) is extracted.
 
    ``@no-chain xxx,yy`` means only disable the stitching behavior for the names xxx and yy.
+  
+.. tip::
+
+   In the config file, you can perform multiple extractions by putting ``@extract`` multiple times over separate lines (i.e. one pattern per line), rather than comma-separating the multiple extraction patterns.
 
 .. _Output extractions guide:
 

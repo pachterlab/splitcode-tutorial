@@ -169,7 +169,13 @@ The **final barcodes** obtained by ``--assign`` (see above) can be outputted in 
 * Default: When neither ``--outb`` nor ``--no-outb`` are specified, the final barcode sequences are simply prepended to the reads of the first output FASTQ file.
 
 The **mapping file** (to map between final barcodes and the tags that form it) is specified via the ``--mapping`` option. The final barcodes will always be sorted in the same order in each run (i.e. AAAAAAAAAAAAAAAA is always the first final barcode, AAAAAAAAAAAAAAAT is always the second final barcode, etc.). Therefore, when using numerical IDs via ``--com-names``, you know that ``SI:i:0`` will always be ``AAAAAAAAAAAAAAAA``.
-   
+
+
+Can I make this final barcodes shorter than 16 bps in length?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Yes, you can truncate the final barcodes using the ``--bclen`` option on the command line to set your desired length of the final barcode (however, it must be less than or equal to 16 bps).
+
 
 How do I specify multiple FASTQ files to be processed at once?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

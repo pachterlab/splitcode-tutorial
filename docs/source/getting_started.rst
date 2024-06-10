@@ -3,7 +3,14 @@ Getting started
 
 Installation
 ^^^^^^^^^^^^
-To use splitcode, first install it from source:
+To use splitcode, you can install it via conda:
+
+.. code-block:: shell
+
+  conda install -c bioconda bowtie
+
+
+Or, to install it from source:
 
 .. code-block:: shell
 
@@ -14,6 +21,7 @@ To use splitcode, first install it from source:
   cmake ..
   make
   make install
+
 
 Alternately, one can download the binaries for Mac and Linux here: https://github.com/pachterlab/splitcode/releases
 
