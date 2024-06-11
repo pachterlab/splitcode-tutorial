@@ -125,7 +125,7 @@ You can extract the reverse complement of a sequence by putting a ``~`` in front
 Appending/Prepending to extracted sequence
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-One can do ``^...^`` to prepend a sequence to a UMI-like extraction pattern or ``^^...^^`` to append a sequence. E.g. ``<^AG^umi>`` means prepending ``AG`` to ``umi`` when it is extracted.
+One can do ``^...^`` to prepend a sequence to an extraction pattern or ``^^...^^`` to append a sequence. E.g. ``<^AG^xxx>`` means prepending ``AG`` to ``xxx`` when it is extracted.
 
 
 .. _Multiple extractions guide:
