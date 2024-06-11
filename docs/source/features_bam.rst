@@ -5,7 +5,7 @@ The output of ``splitcode`` can be in the form of BAM files (`Li, Handsaker, et 
 
 To output a BAM file, run splitcode with the ``--out-bam`` option, along with options such as --com-names, --seq-names, --loc-names, and --bc-names.
 
-An example BAM output (as viewed with `samtools <https://www.htslib.org/>`_)), would look like:
+An example BAM output (as viewed with `samtools <https://www.htslib.org/>`_), would look like:
 
 .. code-block:: text
 
