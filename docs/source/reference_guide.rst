@@ -162,13 +162,15 @@ splitcode help menu which can be accessed via ``splitcode -h``
   -S, --select     Select which FASTQ files to output (comma-separated) (e.g. 0,1,3 = Output files #0, #1, #3)
       --gzip       Output compressed gzip'ed FASTQ files
       --out-fasta  Output in FASTA format rather than FASTQ format
+      --out-bam    Output a BAM file rather than FASTQ files (enter the output BAM file name to -o or --output)
       --keep-com   Preserve the comments of the read names of the input FASTQ file(s)
-      --no-output  Don't output any sequences (output statistics only)
+      --no-output  Don't output any sequences
       --no-outb    Don't output final barcode sequences
       --no-x-out   Don't output extracted UMI-like sequences (should be used with --x-names)
       --mod-names  Modify names of outputted sequences to include identified tag names
       --com-names  Modify names of outputted sequences to include final barcode sequence ID
       --seq-names  Modify names of outputted sequences to include the sequences of identified tags
+      --loc-names  Modify names of outputted sequences to include found tag names and locations
       --x-names    Modify names of outputted sequences to include extracted UMI-like sequences
       --x-only     Only output extracted UMI-like sequences
       --bc-names   Modify names of outputted sequences to include final barcode sequence string
@@ -176,7 +178,7 @@ splitcode help menu which can be accessed via ``splitcode -h``
                    (e.g. 0,2 = Generate unique ID based the tags present by subsetting those tags to tag #0 and tag #2 only)
                    The names of the outputted sequences will be modified to include this secondary sequence ID
   -C  --compress   Set the gzip compression level (default: 1) (range: 1-9)
-  -M  --sam-tags   Modify the default SAM tags (default: CB:Z:,RX:Z:,BI:i:,SI:i:,BC:Z:)
+  -M  --sam-tags   Modify the default SAM tags (default: CB:Z:,RX:Z:,BI:i:,SI:i:,BC:Z:,LX:Z:,YM:Z:)
   Other Options:
   -N, --nFastqs    Number of FASTQ file(s) per run
                    (default: 1) (specify 2 for paired-end)
@@ -192,7 +194,9 @@ splitcode help menu which can be accessed via ``splitcode -h``
       --assign     Assign reads to a final barcode sequence identifier based on tags present
       --bclen      The length of the final barcode sequence identifier (default: 16)
       --inleaved   Specifies that input is an interleaved FASTQ file
+      --keep-r1-r2 Use R1.fastq, R2.fastq, etc. file name formats when demultiplexing using --keep or --keep-grp
       --remultiplex  Turn on remultiplexing mode
+      --unmask       Turn on unmasking mode (extract differences from a masked vs. unmasked FASTA)
       --version    Prints version number
       --cite       Prints citation information
 
