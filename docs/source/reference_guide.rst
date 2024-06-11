@@ -248,6 +248,7 @@ This section is highly optional and is not the recommended way to run splitcode.
       --qtrim-naive Perform quality trimming using a naive algorithm (i.e. trim until a base that meets the quality threshold is encountered)
       --phred64    Use phred+64 encoded quality scores
   -P, --prefix     Bases that will prefix each final barcode sequence (useful for merging separate experiments)
+  -D, --min-delta  When matching tags error-tolerantly, specifies how much worse the next best match must be than the best match
 
 
 From the :ref:`example page`, we can use the command-line rather than the `config.txt <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/example/config.txt>`_ file to specify our configurations we which then write as output:
