@@ -3,7 +3,7 @@ BAM output
 
 The output of ``splitcode`` can be in the form of BAM files (`Li, Handsaker, et al., Bioinformatics 2009 <https://doi.org/10.1093/bioinformatics/btp352>`_). These *unaligned* BAM files are convenient for storing the output sequences along with the metadata associated with tag identification.
 
-To output a BAM file, run splitcode with the ``--out-bam`` option, along with options such as --com-names, --seq-names, --loc-names, and --bc-names.
+To output a BAM file, run splitcode with the ``--out-bam`` option, along with options such as ``--com-names``, ``--seq-names``, ``--loc-names``, and ``--bc-names``.
 
 An example BAM output (as viewed with `samtools <https://www.htslib.org/>`_), would look like:
 
