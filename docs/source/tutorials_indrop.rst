@@ -25,7 +25,7 @@ Here are the two lists of barcodes (one for each round of barcoding):
 
 The ``inDrop_barcode1_list.txt`` file is the file that contains variable length barcodes.
 
-First, note that some preprocessing will need to happen with the first 384 barcodes list, because the barcodes are of variable length (and also, in the list above, the barcodes are reverse complemented). Thus, for each barcode in the list, we will 1) reverse complement it, then 2) pad it if necessary so that it reaches 11-bp in length. Since we know that the constant region starts with GAG, if a barcode is only 8-bp long, we pad GAG, if it is only 9-bp long, we pad GA, and if it only 10-bp long, we pad G.
+First, note that some preprocessing will need to happen with the first 384 barcodes list, because the barcodes are of variable length (and also, in the list above, the barcodes are reverse complemented). Thus, for each barcode in the list, we will 1) **reverse complement** it, then 2) **pad** it if necessary so that it reaches 11-bp in length. Since we know that the constant region starts with GAG, if a barcode is only 8-bp long, we pad GAG, if it is only 9-bp long, we pad GA, and if it is only 10-bp long, we pad G.
 
 .. code-block:: shell
    
