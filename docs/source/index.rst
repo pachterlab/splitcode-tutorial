@@ -37,6 +37,7 @@ splitcode
    tutorials_smartseq3
    tutorials_splitseq
    tutorials_sprite
+   tutorials_indrop
 
 .. toctree::
    :maxdepth: 1

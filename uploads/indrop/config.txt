@@ -1,0 +1,5 @@
+@extract <modified_R1{{barcode1}}>,<modified_R1{{barcode2}}>,{{barcode2}}<modified_R1[6]>
+tag                        location   distance  group     maxFindsG  minFindsG   next
+TGATTGCTTGTGACGCCTT        0:11:33    2         adapter   1          1           {{barcode2}}0-0
+list1.txt$                 0:0:11     1         barcode1  1          1           -
+inDrop_barcode2_list.txt$  0:30       1         barcode2  1          1           -
