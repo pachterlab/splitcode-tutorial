@@ -105,7 +105,7 @@ In certain cases (e.g. long-read SPLiT-seq), the barcodes (and UMI) may not be i
    @extract <umi[10]>8{linker1},<bc[8]>{linker1},{linker1}<bc[8]>{linker2},{linker2}<bc[8]>,{linker2}8<read>0:-1
    tags                            ids      distances  minFinds  maxFinds  locations  next
    GTGGCCGATGTTTCGCATCGGCGTACGACT  linker1  2          1         1         0:18       {linker2}8-8
-   ATCCACGTGCTTGAGACTGTGG*          linker2  2          1         1         0:-30      -
+   ATCCACGTGCTTGAGACTGTGG*          linker2  2          1         1         0      -
 
 .. code-block:: shell
 
