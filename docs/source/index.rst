@@ -43,6 +43,7 @@ splitcode
    :maxdepth: 1
    :caption: Additional Features:
 
+   features_lift
    features_bam
    features_unmask
 
