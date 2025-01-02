@@ -3,10 +3,10 @@
 # -- Project information
 
 project = 'splitcode'
-copyright = '2024, Delaney K. Sullivan, Lior Pachter'
+copyright = '2025, Delaney K. Sullivan, Lior Pachter'
 author = 'Delaney K. Sullivan, Lior Pachter'
 
-release = '0.30.0'
+release = '0.31.0'
 master_doc = 'index'
 
 # -- General configuration
