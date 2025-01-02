@@ -33,14 +33,61 @@ The output FASTA sequences were directed into an output.fasta file and the new G
 Diploid mode
 ^^^^^^^^^^^^
 
+VCF files contain genotype information. In the mouse strain example above, we disregarded that (rather, we only retained variant records that were purely homozygous). But, let's say, we have a hybrid sample (e.g. F1 hybrid) where we want to generate a FASTA file (and optionally, GTF) for each haplotype. We can do this easily by using the ``--diploid`` option (the rest of the command follows the same structure as the command above).
+
+The output FASTA file will contain two records for each chromosome (one for each haplotype). The chromosome names will have the suffixes **_L** and **_R** appended (e.g. 13_L and 13_R would be the chromosome names for chromosome 13, representing the two haplotypes). The GTF file will likewise have _L and _R appended to the chromosome names.
+
 
 
 Nucleotide windows
 ^^^^^^^^^^^^^^^^^^
 
+To extract nucleotide windows around variants, you can use the ``--kmer-length`` option to set the "window size". For example, setting it to 15 defines a sliding window of 15 nucleotides. For a single-nucleotide variant, this results in a total sequence length of 29 nucleotides (14 nucleotides on each side plus the variant itself). The output sequences are written, in FASTA format, to a file defined by the ``--kmer-output`` option. An example is shown below:
+
+.. code-block:: shell
+
+  splitcode --lift genome.fa.gz variants.vcf.gz CAST_EiJ \
+   --rename --kmer-length=31 --kmer-output=output_windows.fasta > output.fasta
+
+The output (output_windows.fasta) may look something as follows (the headers are populated with the variant ID and the genomic coordinates of the window):
+
+.. code-block:: text
+
+  >rs30883997 1:136213921-136213949
+  TCTTAAAAATCCACCTTAAGGTTAGTGGG
+  >rs30883996 1:136213976-136214004
+  ATTCAAGACAAGGACAAGCCCGAGTGCTT
+  >rs217644907 1:136213984-136214012
+  CAAGGATAAGCCCGGGTGCTTAATATCAT
+  >rs30883994 1:136214034-136214062
+  GAGACACGAGGCAGCCTTCAATTTTGCTT
+  >rs30883052 1:136214091-136214119
+  AACTAAGATGGTCAAAATTTCACTGAGAA
+
+
+
+.. tip::
+
+  You can further customize the headers of the output by two additional options. For example, setting ``--kmer-header=X_`` causes X_ to be put in the header in place of the variant ID and, additionally supplying ``--kmer-header-num`` will put incremental numbers after the header (e.g. X_0, X_1, X_2, X_3, etc.).
+
+
 
 Splice junctions
 ----------------
+
+To extract windows (say, of length 15 nucleotides) around splice junctions of SJ.out.tab files (which is nothing more than tab-separated file where the first three columns are the chromosome, start position, and end position), you can do the following: 
+
+.. code-block:: shell
+
+  splitcode --lift --kmer-sj genome.fa.gz SJ.out.tab --kmer-length=15
+
+Each record in the output FASTA file may look something like the following:
+
+
+.. code-block:: text
+
+  >1:3094999-3096284
+  CAATATAGTAAAAAATATTATCATCCTG
 
 
 
