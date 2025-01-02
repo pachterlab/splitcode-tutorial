@@ -133,3 +133,8 @@ Let's say you expect the sequence ``GAGATGG`` at the beginning of the read. What
    :ref:`Error tolerance performance question`
 
 
+Reverse complement matching
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+**revcomp** column: To match both a sequence and its reverse complement, use the revcomp column. Enter ``1`` into this column to enable this (or ``0`` if you don't want to enable this). Note: when specifying an error tolerance, the error tolerance will be applied to both the original sequence and its reverse complement. 
+

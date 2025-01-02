@@ -82,6 +82,10 @@ These options are supplied as a tab-delimited table in the config file, with eac
      - Identifies sequences that may be truncated at the 3′ end
      - Specify the minimum bp's that must match and the allowable substitution mismatch frequency (min_match:mismatch_freq)
      - 3:0.1
+   * - revcomp
+     - Whether sequence's reverse complement should be identified (0 = no; 1 = yes)
+     - 
+     - 1
 
 Header Options
 ~~~~~~~~~~~~~~
