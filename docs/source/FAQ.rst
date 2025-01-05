@@ -187,7 +187,7 @@ Yes! Let's say you have three barcodes (e.g. through split-pool-sequencing) and 
    @barcode-encode group1,group2,group3
 
 
-in the config file, with the order of group names (note: you can also specify this on the command line: ``--barcode-encode``). A combination of tags represented across the three groups in that order will be consistently mapped to a final barcode (if the combinatorial space is too small, you can increase the barcode length via --bclen up to 32). The mapping file produced will be a bit different (it won't contain the mapping between final barcodes and tag combinations). However, you can map final barcodes to tag combinations (i.e. decode those final barcodes), by using a decode_barcode.py script:
+in the config file, with the order of group names (note: you can also specify this on the command line: ``--barcode-encode``). A combination of tags represented across the three groups in that order will be consistently mapped to a final barcode (if the combinatorial space is too small, you can increase the barcode length via --bclen up to 32). The mapping file produced will be a bit different (it won't contain the mapping between final barcodes and tag combinations). However, you can map final barcodes to tag combinations (i.e. decode those final barcodes), by using a `decode_barcode.py <https://raw.githubusercontent.com/pachterlab/splitcode-tutorial/main/uploads/decode_barcode.py>`_ script:
 
 
 .. code-block:: text
