@@ -21,6 +21,7 @@ splitcode
    user_guide_tags
    user_guide_extraction
    extracting_from_names
+   random_insertions
    header_and_sam
    streaming
    demultiplex_guide
