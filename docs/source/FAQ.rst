@@ -177,6 +177,28 @@ Can I make this final barcodes shorter than 16 bps in length?
 Yes, you can truncate the final barcodes using the ``--bclen`` option on the command line to set your desired length of the final barcode (however, it must be less than or equal to 16 bps).
 
 
+Is there an option to directly encode a series of barcodes into a final barcode?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Yes! Let's say you have three barcodes (e.g. through split-pool-sequencing) and want to consistently map them to the same "final barcode" no matter what dataset you process. While enabling the "assign" option, you can easily specify something like:
+
+.. code-block:: text
+
+   @barcode-encode group1,group2,group3
+
+
+in the config file, with the order of group names (note: you can also specify this on the command line: ``--barcode-encode``). A combination of tags represented across the three groups in that order will be consistently mapped to a final barcode (if the combinatorial space is too small, you can increase the barcode length via --bclen up to 32). The mapping file produced will be a bit different (it won't contain the mapping between final barcodes and tag combinations). However, you can map final barcodes to tag combinations (i.e. decode those final barcodes), by using a decode_barcode.py script:
+
+
+.. code-block:: text
+
+   python barcode_encode.py <input mapping file> <barcodes.txt> <output decoded mapping file>
+
+
+The barcodes.txt file is a file containing the list of "final barcodes" you want to decode. The output decoded mapping file contains your barcodes in the first column and the tag combinations in the second column, just like the standard mapping file.
+
+
+
 How do I specify multiple FASTQ files to be processed at once?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
