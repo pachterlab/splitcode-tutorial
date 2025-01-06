@@ -112,13 +112,19 @@ We'll get the following outputs:
 .. code-block:: text
   :caption: out_R1.fq
 
+   @read
    CCC
+   +
+   KKK
 
 
 .. code-block:: text
   :caption: out_R2.fq
 
+   @read
    GGGGGTTTTGGGGG
+   +
+   KKKKKKKKKKKKKK
 
 
 Note that we specified two output files because, again, due to ``@nest``, at the next level, the extracted sequence (from the first level) became file #0 and the input read became file #1.
