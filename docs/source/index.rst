@@ -22,6 +22,7 @@ splitcode
    user_guide_extraction
    extracting_from_names
    random_insertions
+   nesting
    header_and_sam
    streaming
    demultiplex_guide
