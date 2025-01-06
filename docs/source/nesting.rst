@@ -192,7 +192,7 @@ We'll get the following outputs:
    @read
    TATT
    +
-   KKK
+   KKKK
 
 
 .. code-block:: text
