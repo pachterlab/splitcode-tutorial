@@ -75,7 +75,7 @@ OK, we'll use the same input.fastq as the previous example, where the sample rea
    KKKKKKKKKKKK
 
 
-Let's say we want to do the following operations: 1) Extract 4 bp's after encountering AAA, 2) Error-correct the extracted sequence to the following scheme (AAAA becomes TTT; TTTT becomes AAA; CCCC becomes GGG; GGGG becomes CCC). We set up the following config.txt file:
+Let's say we want to do the following operations: 1) Extract 4 bp's after encountering AAA, 2) Error-correct the extracted sequence to the following scheme (AAAA becomes TTT; TTTT becomes GGG; CCCC becomes AAA; GGGG becomes CCC). We set up the following config.txt file:
 
 
 .. code-block:: text
@@ -83,15 +83,15 @@ Let's say we want to do the following operations: 1) Extract 4 bp's after encoun
 
    @extract {X}<extracted_seq[4]>
 
-   ids	tags	subs
-   X	AAA	GGGGG
+   ids	tags
+   X	AAA
 
    @nest
 
    ids	tags	subs	locations
    Y1	AAAA	TTT	0
-   Y2	TTTT	AAA	0
-   Y3	CCCC	GGG	0
+   Y2	TTTT	GGG	0
+   Y3	CCCC	AAA	0
    Y4	GGGG	CCC	0
 
 
@@ -113,7 +113,7 @@ We'll get the following outputs:
   :caption: out_R1.fq
 
    @read
-   CCC
+   GGG
    +
    KKK
 
@@ -122,12 +122,91 @@ We'll get the following outputs:
   :caption: out_R2.fq
 
    @read
-   GGGGGTTTTGGGGG
+   AAATTTTGGGGG
    +
-   KKKKKKKKKKKKKK
+   KKKKKKKKKKKK
 
 
 Note that we specified two output files because, again, due to ``@nest``, at the next level, the extracted sequence (from the first level) became file #0 and the input read became file #1.
+
+
+Error-correcting extracted sequences to a list of barcodes
+----------------------------------------------------------
+
+OK, building off the above, let's reuse the input.fastq read sequence file:
+
+
+.. code-block:: text
+  :caption: input.fastq
+
+   @read
+   AAATTTTGGGGG
+   +
+   KKKKKKKKKKKK
+
+
+
+Let's say we have the following barcodes list (b.txt):
+
+.. code-block:: text
+  :caption: b.txt
+
+   ATAT
+   TCGA
+   GAGG
+   TATT
+
+
+And let's set the following config file, allowing for one mismatch via the ``distances`` column, and correcting it to its original sequence via the ``.`` value in ``subs``. We provide ``b.txt$`` (with the ``$`` after the file name to specify that each sequence in that file should be its own unique tag).
+
+
+.. code-block:: text
+
+
+   @extract {X}<extracted_seq[4]>
+
+   ids	tags	subs
+   X	AAA	GGGGG
+
+   @nest
+
+   ids	tags	subs	locations	distances
+   Y	b.txt$	.	0	1
+
+
+
+So, when we run: 
+
+.. code-block:: text
+
+   splitcode -c config.txt -o out_R1.fq,out_R2.fq input.fastq
+
+
+
+We'll get the following outputs:
+
+
+.. code-block:: text
+  :caption: out_R1.fq
+
+   @read
+   TATT
+   +
+   KKK
+
+
+.. code-block:: text
+  :caption: out_R2.fq
+
+   @read
+   AAATTTTGGGGG
+   +
+   KKKKKKKKKKKK
+
+
+As you can see the **TTTT** that was extracted from input.fastq was corrected (via one hamming distance) to **TATT**.
+
+You can do other stuff too, e.g. if you set ``minFinds`` to 1, the extracted sequences that did not match anything in ``b.txt`` will not be outputted.
 
 
 
