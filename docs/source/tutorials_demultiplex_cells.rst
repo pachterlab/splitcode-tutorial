@@ -37,17 +37,17 @@ We then run the following:
 
 .. code-block:: text
 
-   splitcode --gzip --keep=keep.txt -c config.txt --nFastqs=2 --no-output --no-outb R1.fastq R2.fastq
+   splitcode --gzip --keep-r1-r2 --keep=keep.txt -c config.txt --nFastqs=2 --no-output --no-outb R1.fastq R2.fastq
 
 We use ``--no-output`` because we don't have our "typical output" (i.e. those specified by ``--pipe`` or ``-o``; for all entries in **select.txt** where the second column is blank, those would go into the "typical output"). We use ``-no-outb`` because we don't have any "final barcodes" (since ``--assign`` is not specified) so we shouldn't allocate files for them.
 
-The following six pairs of files will be generated (the _0.fastq.gz files are the R1 files and the _1.fastq.gz files are the R2 files, since, remember, splitcode file numbers are zero-indexed):
+The following six pairs of files will be generated (the _R1.fastq.gz files are the R1 files and the _R2.fastq.gz files are the R2 files since we specified ``--keep-r1-r2``):
 
-* ``1_0.fastq.gz`` and ``1_1.fastq.gz``
-* ``2_0.fastq.gz`` and ``2_1.fastq.gz``
-* ``3_0.fastq.gz`` and ``3_1.fastq.gz``
-* ``4_0.fastq.gz`` and ``4_1.fastq.gz``
-* ``5_0.fastq.gz`` and ``5_1.fastq.gz``
-* ``6_0.fastq.gz`` and ``6_1.fastq.gz``
+* ``1_R1.fastq.gz`` and ``1_R2.fastq.gz``
+* ``2_R1.fastq.gz`` and ``2_R2.fastq.gz``
+* ``3_R1.fastq.gz`` and ``3_R2.fastq.gz``
+* ``4_R1.fastq.gz`` and ``4_R2.fastq.gz``
+* ``5_R1.fastq.gz`` and ``5_R2.fastq.gz``
+* ``6_R1.fastq.gz`` and ``6_R2.fastq.gz``
 
-Each of these files will contain the barcodes associated with the respective files (e.g. reads with the barcode TTGTAGCTGAGTAGTA will be thrown into the files prefixed with 4, i.e. 4_0.fastq.gz and 4_1.fastq.gz).
+Each of these files will contain the barcodes associated with the respective files (e.g. reads with the barcode TTGTAGCTGAGTAGTA will be thrown into the files prefixed with 4, i.e. 4_R1.fastq.gz and 4_R2.fastq.gz).
